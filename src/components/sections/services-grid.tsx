@@ -35,7 +35,6 @@ export function ServicesGrid() {
   return (
     <Section
       id="servicios"
-      index="01"
       label="Servicios"
       title="Qué se atiende en consulta"
       intro="Dos oficios en un mismo consultorio: el del oftalmólogo, que diagnostica y opera, y el del ocularista, que reconstruye lo que la enfermedad o la cirugía se llevaron."

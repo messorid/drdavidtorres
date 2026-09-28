@@ -20,35 +20,65 @@ const steps = [
   },
 ];
 
+/**
+ * Línea de tiempo: baja en vertical en móvil y se tumba desde `md`.
+ *
+ * El riel se dibuja por tramos, uno por paso salvo el último, en lugar de con
+ * una línea única que atraviese la sección: así cada tramo empieza y termina
+ * donde está su punto, sin depender de calcular el centro de las columnas.
+ *
+ * Todo el dibujo va en `aria-hidden`. Quien usa lector de pantalla ya recibe
+ * el orden por la `<ol>` y por el "Paso N" que abre cada título.
+ *
+ * Aquí el número se queda: en una línea de tiempo no decora, dice por dónde
+ * vas y cuánto falta.
+ */
 export function Process() {
   return (
-    <Section
-      index="04"
-      label="Proceso"
-      title="Cómo es el proceso desde que escribes"
-    >
-      <ol className="grid gap-px border-t border-line bg-line md:grid-cols-3">
-        {steps.map((step, i) => (
-          <li
-            key={step.title}
-            className="bg-white p-7 text-center md:p-8 md:text-left"
-          >
-            <span
-              aria-hidden="true"
-              className="inline-block font-heading text-sm font-semibold text-primary tabular-nums"
+    <Section label="Proceso" title="Cómo es el proceso desde que escribes">
+      <ol className="md:flex md:gap-8">
+        {steps.map((step, i) => {
+          const ultimo = i === steps.length - 1;
+
+          return (
+            <li
+              key={step.title}
+              className={`flex gap-5 md:flex-1 md:flex-col md:gap-0 ${
+                ultimo ? "" : "pb-9 md:pb-0"
+              }`}
             >
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <h3 className="mt-5 font-heading text-lg leading-snug font-semibold text-ink">
-              <span className="sr-only">Paso {i + 1}: </span>
-              {step.title}
-            </h3>
-            <p className="mt-3 text-muted">{step.body}</p>
-          </li>
-        ))}
+              <div
+                aria-hidden="true"
+                className="relative flex w-6 shrink-0 justify-center md:w-full md:justify-start"
+              >
+                {/* Tramo hasta el paso siguiente: hacia abajo en móvil,
+                    hacia la derecha en escritorio, cruzando el hueco de la
+                    rejilla (`-2rem`, el mismo valor que `gap-8`). */}
+                {ultimo ? null : (
+                  <>
+                    <span className="absolute top-7 bottom-[-2.25rem] left-3 w-px bg-line md:hidden" />
+                    <span className="absolute top-[11px] right-[-2rem] left-8 hidden h-px bg-line md:block" />
+                  </>
+                )}
+
+                <span className="relative z-10 mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border-2 border-primary bg-white font-heading text-xs font-semibold text-primary tabular-nums md:mt-0">
+                  {i + 1}
+                </span>
+              </div>
+
+              <div className="flex-1 md:mt-6">
+                <h3 className="font-heading text-lg leading-snug font-semibold text-ink">
+                  <span className="sr-only">Paso {i + 1}: </span>
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-muted">{step.body}</p>
+              </div>
+            </li>
+          );
+        })}
       </ol>
 
-      <div className="relative mt-10 aspect-[16/7] w-full overflow-hidden rounded-base bg-surface-alt sm:aspect-[21/7]">
+      <div className="relative mt-12 aspect-[16/7] w-full overflow-hidden rounded-base bg-surface-alt sm:aspect-[21/7]">
         <Image
           src="/img/consulta.jpg"
           alt="Prótesis ocular terminada, presentada en su estuche"

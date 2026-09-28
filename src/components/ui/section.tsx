@@ -1,17 +1,13 @@
 /**
- * Rejilla editorial del sitio (Swiss Modernism): 12 columnas, composición
- * asimétrica y un aire generoso y constante.
+ * Rejilla editorial del sitio (Swiss Modernism): composición asimétrica y un
+ * aire generoso y constante. Por debajo de `lg` todo se apila y se centra,
+ * que es lo que hace legible este patrón en móvil.
  *
- * A la izquierda, una columna estrecha con el número de sección y una etiqueta
- * corta. A la derecha, el contenido. Por debajo de `lg` todo se apila, que es
- * lo que hace legible este patrón en móvil.
- *
- * El número es **decorativo**: va en `aria-hidden` para que un lector de
- * pantalla no anuncie "cero uno" antes de cada encabezado. El orden y la
- * jerarquía reales los da el H2.
+ * Las secciones ya no van numeradas. El "01, 02, 03" venía de la referencia
+ * editorial, pero aquí no ordenaba nada: el visitante no lee el sitio como un
+ * índice, y el número competía con la etiqueta por la misma mirada.
  */
 export function Section({
-  index,
   label,
   title,
   intro,
@@ -20,9 +16,7 @@ export function Section({
   tone = "white",
   className = "",
 }: {
-  /** "01", "02"… Decorativo. */
-  index: string;
-  /** Etiqueta corta bajo el número. */
+  /** Etiqueta corta sobre el título. */
   label: string;
   title: string;
   intro?: string;
@@ -35,22 +29,14 @@ export function Section({
 
   return (
     <section id={id} className={`border-t border-line ${bg} ${className}`}>
-      {/* El número y la etiqueta van en una línea sobre el título, no en una
-          columna lateral. Como columna ocupaban una cuarta parte del ancho
-          casi vacía y empujaban el contenido 285 px a la derecha; el hueco se
-          notaba en todas las secciones del sitio. */}
+      {/* La etiqueta va en una línea sobre el título, no en una columna
+          lateral. Como columna ocupaba una cuarta parte del ancho casi vacía
+          y empujaba el contenido 285 px a la derecha; el hueco se notaba en
+          todas las secciones del sitio. */}
       <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-24 lg:text-left">
-        <div className="flex items-baseline justify-center gap-4 lg:justify-start">
-          <span
-            aria-hidden="true"
-            className="font-heading text-sm font-semibold text-primary tabular-nums"
-          >
-            {index}
-          </span>
-          <p className="font-heading text-xs font-semibold tracking-[0.22em] text-muted uppercase">
-            {label}
-          </p>
-        </div>
+        <p className="font-heading text-xs font-semibold tracking-[0.22em] text-primary uppercase">
+          {label}
+        </p>
 
         <h2 className="mx-auto mt-5 max-w-3xl text-2xl leading-tight font-bold tracking-[-0.01em] text-balance text-ink sm:text-[1.75rem] lg:mx-0">
           {title}

@@ -104,7 +104,7 @@ export function TrustBar() {
           onPointerDown={detener}
           onMouseEnter={detener}
           onFocusCapture={detener}
-          className="flex snap-x snap-mandatory overflow-x-auto md:grid md:snap-none md:grid-cols-3 md:overflow-visible"
+          className="sin-barra flex snap-x snap-mandatory overflow-x-auto md:grid md:snap-none md:grid-cols-3 md:overflow-visible"
         >
           {items.map((item) => (
             <div

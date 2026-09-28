@@ -16,7 +16,6 @@ export function Casos() {
   return (
     <Section
       id="casos"
-      index="03"
       label="Casos"
       title="Resultados en pacientes reales"
       intro="Fotografías de casos atendidos en el consultorio, publicadas con el consentimiento de cada paciente."

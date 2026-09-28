@@ -123,3 +123,21 @@ export const whatsappMessage =
 export function whatsappUrl(message: string = whatsappMessage): string {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
+
+type Sede = (typeof site.sedes)[number];
+
+/**
+ * Enlace a Google Maps para llegar a una sede.
+ *
+ * Se arma como **búsqueda** con los datos que el cliente confirmó, no con
+ * coordenadas: no se han verificado sobre el mapa y un pin unos metros
+ * desplazado manda al paciente a la puerta equivocada. Si Maps reconoce el
+ * sitio, abre su ficha con la ruta; si no, muestra la búsqueda en la ciudad
+ * correcta, que sigue siendo cierto.
+ */
+export function mapsUrl(sede: Sede): string {
+  const consulta = [sede.lugar, sede.direccion, sede.ciudad, sede.estado, site.country]
+    .filter(Boolean)
+    .join(", ");
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(consulta)}`;
+}

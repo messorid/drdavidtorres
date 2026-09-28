@@ -27,26 +27,16 @@ export const metadata: Metadata = buildMetadata({
 });
 
 /** Índice de servicios: el hub que enlaza a las nueve páginas. */
-function Bloque({ area, indice }: { area: Area; indice: string }) {
+function Bloque({ area }: { area: Area }) {
   const { title, intro } = areaLabels[area];
   const items = servicesByArea(area);
 
   return (
     <section className="border-t border-line bg-white first:border-t-0">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
-        <div>
-          <div className="flex items-baseline gap-4 lg:block">
-            <span
-              aria-hidden="true"
-              className="font-heading text-sm font-semibold text-primary tabular-nums"
-            >
-              {indice}
-            </span>
-            <p className="font-heading text-xs font-semibold tracking-[0.22em] text-muted uppercase lg:mt-3">
-              {area === "ocularista" ? "Ocularista" : "Oftalmología"}
-            </p>
-          </div>
-        </div>
+        <p className="font-heading text-xs font-semibold tracking-[0.22em] text-primary uppercase">
+          {area === "ocularista" ? "Ocularista" : "Oftalmología"}
+        </p>
 
         <div className="mt-5">
           <h2 className="text-2xl leading-tight font-bold tracking-[-0.01em] text-ink sm:text-[1.75rem]">
@@ -123,13 +113,13 @@ export default function ServiciosPage() {
         />
       </div>
 
-      <Bloque area="oftalmologia" indice="01" />
-      <Bloque area="ocularista" indice="02" />
+      <Bloque area="oftalmologia" />
+      <Bloque area="ocularista" />
 
       <section className="border-t border-line bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-20 lg:text-left">
           <div>
-            <p className="font-heading text-xs font-semibold tracking-[0.22em] text-muted uppercase">
+            <p className="font-heading text-xs font-semibold tracking-[0.22em] text-primary uppercase">
               El taller
             </p>
           </div>
@@ -157,7 +147,7 @@ export default function ServiciosPage() {
       <section className="border-t border-line bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
           <div>
-            <p className="font-heading text-xs font-semibold tracking-[0.22em] text-muted uppercase">
+            <p className="font-heading text-xs font-semibold tracking-[0.22em] text-primary uppercase">
               Para colegas
             </p>
           </div>

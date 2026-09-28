@@ -22,7 +22,6 @@ const points = [
 export function DoctorPreview() {
   return (
     <Section
-      index="02"
       label="El especialista"
       title="Quién te atiende"
       intro="Médico Cirujano y Oftalmólogo egresado de la UCLA, profesor universitario y ex director del Hospital de Sarare. Su trabajo une dos oficios que rara vez van juntos: la cirugía ocular y la elaboración artesanal de prótesis."
@@ -69,17 +68,15 @@ export function DoctorPreview() {
             Qué hace diferente este trabajo
           </h3>
           <ul className="mt-6 border-t border-line">
-            {points.map((point, i) => (
+            {points.map((point) => (
               <li
                 key={point}
-                className="flex gap-5 border-b border-line py-5 text-muted"
+                className="flex gap-4 border-b border-line py-5 text-muted"
               >
-                <span
-                  aria-hidden="true"
-                  className="font-heading text-sm font-semibold text-primary tabular-nums"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                <Icon
+                  name="check"
+                  className="mt-1 h-4 w-4 shrink-0 text-primary"
+                />
                 <span>{point}</span>
               </li>
             ))}

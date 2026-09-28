@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Carrusel } from "@/components/ui/carrusel";
 
 export type Caso = {
   id: string;
@@ -53,19 +54,15 @@ export function BeforeAfter({ caso }: { caso: Caso }) {
 
 export function CasosGrid({ casos, label }: { casos: Caso[]; label: string }) {
   return (
-    <div
-      role="region"
-      aria-label={label}
-      tabIndex={0}
-      className="-mx-4 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:overflow-visible lg:px-0 lg:pb-0"
+    <Carrusel
+      label={label}
+      listaClassName="flex snap-x snap-mandatory gap-4 lg:grid lg:snap-none lg:grid-cols-2 lg:gap-6"
     >
-      <ul className="flex snap-x snap-mandatory gap-4 lg:grid lg:snap-none lg:grid-cols-2 lg:gap-6">
-        {casos.map((caso) => (
-          <li key={caso.id} className="w-[88%] shrink-0 snap-start lg:w-auto">
-            <BeforeAfter caso={caso} />
-          </li>
-        ))}
-      </ul>
-    </div>
+      {casos.map((caso) => (
+        <li key={caso.id} className="w-[88%] shrink-0 snap-start lg:w-auto">
+          <BeforeAfter caso={caso} />
+        </li>
+      ))}
+    </Carrusel>
   );
 }

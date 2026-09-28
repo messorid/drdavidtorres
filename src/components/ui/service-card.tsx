@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@/components/ui/icon";
+import { Carrusel } from "@/components/ui/carrusel";
 import type { Service } from "@/lib/services";
 
 /**
@@ -60,12 +61,8 @@ export function ServiceCard({
 }
 
 /**
- * Carrusel en móvil, rejilla desde `md`.
- *
- * El carrusel es scroll nativo con `scroll-snap`: funciona con el dedo, con
- * rueda y con teclado sin una línea de JavaScript. El contenedor lleva
- * `role="region"` y `tabIndex` porque una zona desplazable debe poder
- * alcanzarse y recorrerse con el teclado.
+ * Carrusel en móvil, rejilla desde `md`. El desplazamiento y los botones los
+ * pone `Carrusel`; aquí sólo se decide cuánto ocupa cada tarjeta.
  */
 export function ServiceCarousel({
   services,
@@ -75,22 +72,18 @@ export function ServiceCarousel({
   label: string;
 }) {
   return (
-    <div
-      role="region"
-      aria-label={label}
-      tabIndex={0}
-      className="-mx-4 overflow-x-auto px-4 pb-4 sm:-mx-6 sm:px-6 md:mx-0 md:overflow-visible md:px-0 md:pb-0"
+    <Carrusel
+      label={label}
+      listaClassName="flex snap-x snap-mandatory gap-4 md:grid md:snap-none md:grid-cols-2 md:gap-5 lg:grid-cols-3"
     >
-      <ul className="flex snap-x snap-mandatory gap-4 md:grid md:snap-none md:grid-cols-2 md:gap-5 lg:grid-cols-3">
-        {services.map((service, i) => (
-          <li
-            key={service.slug}
-            className="flex w-[82%] shrink-0 snap-start sm:w-[58%] md:w-auto"
-          >
-            <ServiceCard service={service} priority={i === 0} />
-          </li>
-        ))}
-      </ul>
-    </div>
+      {services.map((service, i) => (
+        <li
+          key={service.slug}
+          className="flex w-[82%] shrink-0 snap-start sm:w-[58%] md:w-auto"
+        >
+          <ServiceCard service={service} priority={i === 0} />
+        </li>
+      ))}
+    </Carrusel>
   );
 }

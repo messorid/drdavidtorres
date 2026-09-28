@@ -91,6 +91,18 @@
   .measure {
     max-width: 68ch;
   }
+
+  /* Carruseles: se oculta la barra del navegador porque en Windows se dibuja
+     como una franja gris con flechas que no pega con nada. El desplazamiento
+     sigue existiendo (dedo, rueda, teclado) y además hay botones visibles,
+     que es lo que la barra aportaba: avisar de que hay más contenido. */
+  .sin-barra {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .sin-barra::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* Hero: el efecto de borroso a nitido solo desde `lg`.
