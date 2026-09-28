@@ -1,0 +1,201 @@
+# Imágenes de cabecera: qué falta y cómo generarlas
+
+## Antes de generar nada: dónde sí y dónde no
+
+Este es el sitio de un médico, y la imagen de una página de servicio funciona
+como si fuera **su trabajo**. Eso marca dos categorías:
+
+**✅ Se puede generar sin problema**
+Fondos abstractos, texturas, composiciones conceptuales y **ilustración
+médica didáctica** — la que se reconoce a simple vista como ilustración, igual
+que un diagrama de anatomía. Se usa en medicina desde siempre y no engaña a
+nadie.
+
+**❌ No conviene generar**
+Cualquier imagen **fotorrealista** que pueda leerse como un caso real: un ojo
+con pterigión que parezca una foto clínica, una prótesis que parezca la suya,
+un paciente, o el propio doctor. En la página de "Cirugía de pterigión" de un
+médico, una foto sintética de un pterigión **se lee como un caso suyo**. Eso es
+publicidad médica engañosa y le expone a él, no a quien la generó.
+
+La regla práctica: **si puede confundirse con una fotografía del consultorio,
+no se genera — se toma.** Por eso todos los prompts de abajo piden
+explícitamente estilo ilustración o abstracto.
+
+---
+
+## 1. Home — fondo del hero
+
+**Hoy:** un iris dibujado en SVG, con el efecto de borroso a nítido.
+**Archivo:** no existe todavía; habría que crear `public/img/hero-home.jpg`.
+
+Funciona bien como está y el efecto borroso→nítido es la idea central del
+sitio. Si se cambia por una imagen, el efecto **se mantiene**: las máscaras
+funcionan igual sobre una fotografía.
+
+- **Formato:** 16:9 apaisado · **2400 × 1350 px**
+- **Importante:** el centro debe ser oscuro y sin detalle, porque ahí va el
+  texto. Lo interesante tiene que quedar en los bordes.
+
+```
+Extreme macro of a human iris, deep navy blue and electric blue tones,
+radial stroma fibers, dark pupil at center, one soft specular highlight,
+studio lighting on black background, left half softly defocused and right
+half razor sharp, cinematic, photographic macro style, no text
+```
+
+```
+Macro extremo de un iris humano, tonos azul marino profundo y azul
+eléctrico, fibras radiales del estroma, pupila oscura al centro, un solo
+reflejo especular suave, iluminación de estudio sobre fondo negro, mitad
+izquierda desenfocada y mitad derecha nítida, cinematográfico, sin texto
+```
+
+> Un macro de iris es el único caso fotorrealista sin riesgo: es anatomía
+> genérica, no el resultado de un tratamiento ni un paciente reconocible.
+
+---
+
+## 2. `/servicios` — banda de apertura
+
+**Hoy:** el pintado a mano del iris (foto real). **Funciona muy bien.**
+**Archivo:** `public/img/taller-protesis.jpg`
+
+Solo cambiar si se quiere algo más abstracto. Es una banda muy apaisada.
+
+- **Formato:** 21:7 · **2100 × 700 px**
+
+```
+Abstract wide banner, concentric rings and radial lines suggesting an iris,
+deep navy #05283C background with electric blue #1363DE accents, thin
+precise white linework, generous negative space, medical and technical
+feeling, minimal, flat vector illustration, no text, no faces
+```
+
+```
+Banner abstracto muy apaisado, anillos concéntricos y líneas radiales que
+sugieren un iris, fondo azul marino #05283C con acentos azul eléctrico
+#1363DE, trazo blanco fino y preciso, mucho espacio negativo, sensación
+médica y técnica, minimalista, ilustración vectorial plana, sin texto,
+sin rostros
+```
+
+---
+
+## 3. Los tres servicios sin foto — ilustración médica
+
+Aquí el estilo **debe ser ilustración**, no fotografía. Así la imagen explica
+la patología sin hacerse pasar por un caso del consultorio.
+
+- **Formato de los tres:** 21:8 · **2100 × 800 px**
+- El motivo debe ir **descentrado**, porque el recorte en móvil es más
+  cuadrado y come los laterales.
+
+### 3.1 Cirugía de glaucoma → `public/img/servicio-cirugia-glaucoma.jpg`
+
+```
+Medical illustration of an eye in cross section showing the optic nerve and
+aqueous humor drainage, subtle arrows indicating intraocular pressure, deep
+navy #05283C background, electric blue #1363DE and white linework, clean
+educational diagram style, flat vector, wide composition with the eye
+off-center to the right, no text, no labels
+```
+
+```
+Ilustración médica de un ojo en corte transversal mostrando el nervio óptico
+y el drenaje del humor acuoso, flechas sutiles que indican la presión
+intraocular, fondo azul marino #05283C, trazo en azul eléctrico #1363DE y
+blanco, estilo diagrama educativo limpio, vectorial plano, composición
+apaisada con el ojo descentrado a la derecha, sin texto ni etiquetas
+```
+
+### 3.2 Cirugía de pterigión → `public/img/servicio-pterigion.jpg`
+
+```
+Medical illustration of an eye seen from the front with a wedge of
+conjunctival tissue growing from the inner corner toward the cornea, deep
+navy #05283C background, electric blue #1363DE and white linework, clean
+educational diagram style, flat vector, wide composition with the eye
+off-center to the right, no text, no labels
+```
+
+```
+Ilustración médica de un ojo visto de frente con una cuña de tejido
+conjuntival que avanza desde el ángulo interno hacia la córnea, fondo azul
+marino #05283C, trazo en azul eléctrico #1363DE y blanco, estilo diagrama
+educativo limpio, vectorial plano, composición apaisada con el ojo
+descentrado a la derecha, sin texto ni etiquetas
+```
+
+### 3.3 Chalazión → `public/img/servicio-chalazion.jpg`
+
+```
+Medical illustration of an upper eyelid in profile showing a blocked
+meibomian gland forming a firm nodule, deep navy #05283C background,
+electric blue #1363DE and white linework, clean educational diagram style,
+flat vector, wide composition off-center to the right, no text, no labels
+```
+
+```
+Ilustración médica de un párpado superior de perfil mostrando una glándula
+de Meibomio obstruida que forma un nódulo firme, fondo azul marino #05283C,
+trazo en azul eléctrico #1363DE y blanco, estilo diagrama educativo limpio,
+vectorial plano, composición apaisada descentrada a la derecha, sin texto
+ni etiquetas
+```
+
+---
+
+## 4. `/contacto` — no tiene imagen (opcional)
+
+La página de contacto entra directa al grano y funciona sin imagen. Si se
+quiere una banda:
+
+- **Formato:** 21:7 · **2100 × 700 px**
+- **Archivo:** `public/img/contacto.jpg` (habría que enlazarlo)
+
+```
+Abstract wide banner suggesting a map or routes between cities, thin white
+lines and small location markers on deep navy #05283C, electric blue
+#1363DE accents, minimal geometric flat illustration, generous negative
+space, no text, no real place names
+```
+
+```
+Banner abstracto apaisado que sugiere un mapa o rutas entre ciudades, líneas
+blancas finas y pequeños marcadores de ubicación sobre azul marino #05283C,
+acentos azul eléctrico #1363DE, ilustración geométrica plana y minimalista,
+mucho espacio negativo, sin texto ni nombres de lugares reales
+```
+
+---
+
+## Reglas comunes para todos los prompts
+
+- **Paleta:** `#05283C` (marino), `#1363DE` (azul), blanco. Está en todos los
+  prompts; si la herramienta se desvía, insistir con los códigos.
+- **Sin texto en la imagen.** Cualquier letra que genere la IA saldrá
+  deformada y además el sitio ya pone sus propios títulos encima.
+- **Fondo oscuro.** El texto blanco va encima; un fondo claro obliga a
+  rehacer el contraste de esa sección.
+- **Sin rostros.** Ni reales ni generados.
+- **Composición descentrada** en las bandas apaisadas: el recorte en móvil
+  es más cuadrado y se come los laterales.
+
+## Cómo instalarlas
+
+1. Dejar el archivo en la ruta indicada, con **exactamente el mismo nombre**.
+2. Borrar `.next/cache/images`.
+3. Volver a levantar el sitio.
+
+No hace falta tocar código, salvo en `/contacto`, que aún no tiene hueco de
+imagen.
+
+## Después de cambiarlas, hay que revisar dos cosas
+
+- **El contraste del texto encima.** Los heroes se verifican midiendo los
+  píxeles reales de la imagen, no el color teórico. Una imagen más clara de lo
+  previsto tumba la legibilidad.
+- **El texto alternativo.** Vive en `src/lib/services.ts` (`imageAlt`) y debe
+  describir la imagen nueva. Si es una ilustración, el alt debe decir
+  "Ilustración de…", como ahora.

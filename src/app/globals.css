@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Sistema de diseño — estilo "accesible y ético".
+  Todos los pares de color usados para texto cumplen WCAG AA (4.5:1) sobre su
+  fondo. Si se cambia un token, hay que volver a verificar el contraste.
+*/
+@theme {
+  /*
+    Paleta tomada del manual de marca del cliente: #05283C (marino),
+    #1363DE (azul) y blanco. No se inventa ningún color de marca.
+  */
+
+  /* Azul de marca. Es el acento único del sistema editorial: enlaces,
+     iconos y numeración. 5.37:1 sobre blanco. */
+  --color-primary: #1363de;
+  --color-primary-dark: #0f4cab;
+  --color-primary-light: #5b9bf0;
+  --color-primary-fg: #ffffff;
+
+  /* Marino de marca. Fondos oscuros (hero, CTA final) y tinta del texto:
+     15.4:1 sobre blanco, muy por encima de AAA. */
+  --color-navy: #05283c;
+  --color-navy-deep: #04202f;
+
+  /* CTA de WhatsApp. #15803D da 4.6:1 con texto blanco encima; los verdes
+     más claros de la escala no llegan a AA y por eso no se usan para botón. */
+  --color-cta: #15803d;
+  --color-cta-dark: #14532d;
+
+  /* Texto: la tinta es el marino de marca. */
+  --color-ink: #05283c;
+  --color-muted: #47606d;
+
+  /* Superficies de papel, frías para acompañar al azul. Con un solo acento,
+     el gris deja que el color señale lo que importa en vez de teñirlo todo. */
+  --color-surface: #f1f4f6;
+  --color-surface-alt: #e4eaee;
+  --color-line: #d7e0e5;
+
+  /* Rejilla editorial: 12 columnas y un aire generoso y constante. */
+  --radius-base: 0.5rem;
+
+  /* Rubik es la tipografía del manual de marca. */
+  --font-heading: var(--font-rubik);
+  --font-sans: var(--font-rubik);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Evita que el ancla quede bajo el header fijo. */
+    scroll-padding-top: 6rem;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    /* 16px mínimo en móvil. */
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading), system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visible y grueso en todo elemento interactivo. Requisito del estilo
+     accesible, no una preferencia estética. */
+  :where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Ancho de línea legible: 65-75 caracteres. */
+  .measure {
+    max-width: 68ch;
+  }
+}
+
+/* Hero: el efecto de borroso a nitido solo desde `lg`.
+   En movil la imagen se ve entera y nitida — en 375 px no hay ancho para
+   dos zonas, y el sujeto acababa cayendo justo en la parte desenfocada. */
+@media (min-width: 1024px) {
+  .hero-capa-nitida {
+    -webkit-mask-image: linear-gradient(to right, transparent 34%, #000 62%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 34%, #000 62%, #000 100%);
+  }
+  .hero-capa-borrosa {
+    -webkit-mask-image: linear-gradient(to right, #000 0%, #000 34%, transparent 62%);
+    mask-image: linear-gradient(to right, #000 0%, #000 34%, transparent 62%);
+  }
+}
+
+/* El hero arranca desenfocado y enfoca: la misma metafora del sitio contada
+   en el tiempo. Solo se aplica bajo `motion-safe:`. */
+@keyframes enfocar {
+  from {
+    filter: blur(16px);
+    opacity: 0.35;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Nadie recibe animación que no pidió. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

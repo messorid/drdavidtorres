@@ -1,0 +1,31 @@
+{
+  "name": "Centro Oftalmológico y Prótesis Oculares Dr. David Torres",
+  "fuente": "Manual de marca del cliente (public/06 - Fotos del Doctor y Consultorio)",
+  "style": "editorial Swiss — rejilla de 12 columnas, papel neutro y un solo acento; hero y CTA final sobre el marino de marca",
+  "colors": {
+    "navy": "#05283C",
+    "navyDeep": "#04202F",
+    "primary": "#1363DE",
+    "primaryDark": "#0F4CAB",
+    "primaryLight": "#5B9BF0",
+    "cta": "#15803D",
+    "ctaDark": "#14532D",
+    "ink": "#05283C",
+    "muted": "#47606D",
+    "surface": "#F1F4F6",
+    "surfaceAlt": "#E4EAEE",
+    "line": "#D7E0E5"
+  },
+  "fonts": {
+    "heading": "Rubik",
+    "body": "Rubik"
+  },
+  "radius": "0.5rem",
+  "grid": "12 columnas; el contenido arranca en la columna 4",
+  "logo": {
+    "isotipoMarino": "/marca/isotipo-marino.png (fondos claros)",
+    "isotipoBlanco": "/marca/isotipo-blanco.png (fondos oscuros)",
+    "concepto": "letra D (David) + letra T (Torres) + ojo"
+  },
+  "notes": "#05283C, #1363DE y blanco salen del manual de marca; no se inventa ningun color. primaryLight se aclaro de #3D84EA a #5B9BF0 porque el original daba 4.14:1 sobre el marino y no llegaba a AA. Si se cambia un token hay que volver a verificar el contraste."
+}

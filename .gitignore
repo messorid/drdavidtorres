@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Variables de entorno locales
+.env.local
+
+# Archivos fuente de marca: no se publican, solo se conservan como respaldo
+marca-original/
+
+# Archivo de fotos del cliente: no se publica, se conserva como respaldo
+fotos-cliente/
