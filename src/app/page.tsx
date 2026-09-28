@@ -28,8 +28,8 @@ export default function HomePage() {
       <Hero />
       <TrustBar />
       <ServicesGrid />
-      <DoctorPreview />
       <Casos />
+      <DoctorPreview />
       <Process />
       <Areas />
       <FaqSection />

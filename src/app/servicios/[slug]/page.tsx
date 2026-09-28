@@ -112,11 +112,36 @@ export default async function ServicePage({
             rostros salían cortados. En 16:9, y sin ocupar todo el ancho, el
             sujeto entra entero. */}
         <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
-          <div className="">
-            {/* `contain`, no `cover`: estas fotos son de objetos y el
-                recorte les cortaba la pieza. Sobre el marino de marca, que
-                es el mismo fondo de las ilustraciones, las bandas que deja
-                el encaje no se notan. */}
+          {service.imageHeroMobile ? (
+            // Hay un archivo hecho a medida para cada proporción, así que se
+            // llena el marco: nada de encajar sobre marino ni de bandas.
+            <>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-base bg-navy md:hidden">
+                <Image
+                  src={service.imageHeroMobile}
+                  alt={service.imageAlt}
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative hidden aspect-[21/9] w-full overflow-hidden rounded-base bg-navy md:block">
+                <Image
+                  src={service.imageHero}
+                  alt={service.imageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 1199px) 100vw, 1152px"
+                  className="object-cover"
+                />
+              </div>
+            </>
+          ) : (
+            /* `contain`, no `cover`: el resto son fotos de objetos tomadas
+               en vertical y el recorte les cortaba la pieza. Sobre el marino
+               de marca, que es el mismo fondo de las ilustraciones, las
+               bandas que deja el encaje no se notan. */
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-base bg-navy sm:aspect-video">
               <Image
                 src={service.imageHero}
@@ -127,7 +152,7 @@ export default async function ServicePage({
                 className="object-contain"
               />
             </div>
-          </div>
+          )}
         </div>
 
         <div className="mx-auto max-w-6xl px-4 pt-14 pb-20 sm:px-6 lg:pt-16 lg:pb-28">

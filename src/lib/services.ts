@@ -43,6 +43,12 @@ export type Service = {
    *  archivo a las dos hacía que la cabecera recortara el 39% del alto —
    *  en la foto del consultorio, eso cortaba la cara del doctor. */
   imageHero: string;
+  /** Variante vertical/cuadrada de la cabecera, para móvil.
+   *
+   *  Opcional. Cuando existe, la cabecera deja de encajar la imagen sobre
+   *  marino y pasa a llenar el marco en los dos tamaños: hay un archivo
+   *  pensado para cada proporción, así que no hacen falta bandas. */
+  imageHeroMobile?: string;
   /** Texto alternativo de esa imagen. Describe la imagen, no repite el
    *  título del servicio. */
   imageAlt: string;
@@ -110,8 +116,9 @@ export const services: Service[] = [
       "Hola Dr. Torres, quisiera agendar una consulta oftalmológica.",
     image: "/img/servicio-consulta-oftalmologica.jpg",
     imageHero: "/img/servicio-consulta-oftalmologica-hero.jpg",
+    imageHeroMobile: "/img/servicio-consulta-oftalmologica-movil.jpg",
     imageAlt:
-      "El Dr. Torres en su consultorio, junto a la lámpara de hendidura",
+      "Exploración del ojo con la lámpara de hendidura: el haz de luz ilumina el iris de la paciente",
     navLabel: "Consulta",
     inNav: false,
   },
@@ -510,8 +517,13 @@ export const services: Service[] = [
       "Hola Dr. Torres, quisiera consultar por insumos quirúrgicos oculares.",
     image: "/img/servicio-insumos-quirurgicos-oculares.jpg",
     imageHero: "/img/servicio-insumos-quirurgicos-oculares-hero.jpg",
+    // El cliente no tiene todavía ninguna fotografía de los insumos en sí
+    // (conformadores, protectores, anillos, implantes de PMMA). Se usa una
+    // pieza real del taller y el alt dice exactamente lo que es: describir
+    // un molde como si fuera un conformador sería una afirmación falsa en
+    // una página dirigida a otros médicos.
     imageAlt:
-      "Moldes de yeso y la pieza de resina de una prótesis óculo-palpebral",
+      "Molde de yeso abierto sobre la mesa del taller, con la impresión de la cavidad",
     navLabel: "Insumos quirúrgicos",
     inNav: false,
   },

@@ -46,12 +46,28 @@ así explican la patología sin hacerse pasar por un caso del consultorio.
 Si algún día hay fotografía clínica real de esos procedimientos, sustituye a
 la ilustración sin más.
 
+## B bis. Los insumos quirúrgicos — la que más falta hace ahora
+
+No hay **ninguna** fotografía de los insumos en sí. La página que se dirige a
+otros cirujanos ofrece conformadores, protectores corneales, anillos de
+simbléfaro e implantes de PMMA, y la ilustra un molde de yeso del taller,
+porque es lo más cercano que hay. Un colega que entra a encargar piezas no ve
+la pieza.
+
+Es la foto más fácil de todas y la que más vende:
+
+| Archivo | Qué fotografiar |
+|---|---|
+| `public/img/servicio-insumos-quirurgicos-oculares.jpg` | Las piezas **puestas en fila sobre fondo liso** (una cartulina negra o blanca vale): un conformador, un protector corneal, un anillo de simbléfaro y un implante de PMMA, con una regla o una moneda al lado para que se entienda el tamaño. **Horizontal**, luz de ventana, sin flash. |
+
+Con esa toma se resuelven la tarjeta y la cabecera de la página.
+
 ## C. Mejoras que suman, sin urgencia
 
 | Archivo | Qué fotografiar |
 |---|---|
 | `public/img/doctor.jpg` | Retrato **vertical** de medio cuerpo, fondo neutro, con bata. Serviría también para prensa y redes. La actual funciona, pero es de contexto. |
-| `public/img/consulta.jpg` | El consultorio por dentro: sala de espera o el sillón de exploración. **Horizontal**. |
+| `public/img/consulta.jpg` | El consultorio por dentro: sala de espera o el sillón de exploración. **Horizontal**. Ahora mismo no existe ninguna: ese hueco lo ocupa la foto del quirófano. |
 | `public/img/taller-protesis.jpg` | El puesto de trabajo del taller, con las herramientas. **Horizontal**. |
 
 ---
@@ -68,6 +84,17 @@ la ilustración sin más.
 
 ---
 
+## Por qué casi todo se recorta
+
+De las 32 fotografías publicables, **31 son verticales** (tomadas con el
+teléfono de pie). La única panorámica de verdad es la del quirófano, y por eso
+es la que ocupa la banda ancha de la sección de proceso.
+
+Una foto vertical metida en una banda horizontal pierde más de la mitad del
+alto, y lo que se pierde suele ser justo el sujeto. Si en las próximas tomas
+se giran las que muestran algo ancho —el consultorio, el taller, las
+fachadas— se gana más que con cualquier retoque.
+
 ## Especificaciones técnicas
 
 - **Resolución:** cualquier teléfono actual sobra. Mínimo 1600 px de ancho.
@@ -76,6 +103,18 @@ la ilustración sin más.
 - **Sin filtros** y sin marcas de agua.
 - **Formato:** JPG o HEIC, indistinto.
 - Si una foto sale girada, no importa: la orientación se corrige al procesarla.
+
+## Una advertencia sobre las capturas de Instagram
+
+De las fotos entregadas, 16 son capturas de pantalla de Instagram. Una de
+ellas —la que se estaba usando como «prótesis en su molde de yeso»— lleva
+estampada la etiqueta de Meta **«Contenido generado por IA»**. Se retiró del
+sitio: iba dentro de la galería «cómo se hace una prótesis, paso a paso», o
+sea presentada como documentación del trabajo real.
+
+Las otras 15 no llevan esa etiqueta. Aun así conviene que el doctor confirme
+que son suyas, porque varias son fotogramas de vídeo de baja resolución y no
+hay forma de saberlo desde aquí. Si alguna no lo es, se quita.
 
 ## Vídeos
 

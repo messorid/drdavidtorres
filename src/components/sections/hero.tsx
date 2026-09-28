@@ -1,6 +1,7 @@
 import { WhatsAppButton } from "@/components/ui/cta-button";
 import { Icon } from "@/components/ui/icon";
 import Image from "next/image";
+import { OjoInteractivo } from "@/components/ui/ojo-interactivo";
 import { site, areaServedLabel } from "@/lib/site";
 
 /**
@@ -74,6 +75,30 @@ export function Hero() {
     <section className="relative isolate overflow-hidden bg-[#04202f]">
       <EyeBackdrop />
 
+      {/* El ojo va SOBRE el velo y DEBAJO del texto. Si fuera dentro de
+          `EyeBackdrop` lo taparía el velo, que allí llega al 95%; y si fuera
+          dentro de la capa desenfocada obligaría a recalcular un gaussiano a
+          pantalla completa en cada fotograma.
+
+          Se sale por el borde izquierdo a propósito. Completo y centrado en
+          su columna se leía como un segundo ojo junto al de la foto, y los
+          dos juntos parecían una pareja de ojos; sangrando por el borde se
+          lee como lo que es, una capa gráfica.
+
+          El 20% / 78% no es arbitrario: más a la izquierda, al mirar hacia
+          ese lado el iris se salía de la pantalla y el gesto se perdía. Con
+          estos valores queda entero incluso en el extremo del recorrido.
+
+          Solo desde `lg`. Por debajo, la foto ya ES un ojo enorme y a pantalla
+          completa: el dibujo encima no se distingue ni subiéndolo al 55% de
+          opacidad, y lo único que aporta es ensuciar el texto. Al quedar en
+          `display:none`, el observador nunca lo ve entrar en pantalla y en
+          móvil no llega a arrancar ni un fotograma.
+
+          La opacidad sale de la medición de contraste, no del ojo: subirla
+          obliga a volver a pasar `hero-contrast.mjs`. */}
+      <OjoInteractivo className="pointer-events-none absolute hidden -translate-x-1/2 -translate-y-1/2 lg:top-[52%] lg:left-[20%] lg:block lg:w-[78%] lg:opacity-[0.24]" />
+
       <div className="relative mx-auto flex min-h-[74svh] max-w-6xl flex-col justify-center px-4 py-14 text-center sm:px-6 lg:min-h-[86svh] lg:py-24 lg:text-left">
         <div className="mx-auto max-w-2xl lg:mx-0">
           {/* En blanco, no en azul: al abrir el velo para que se vea el ojo,
@@ -109,7 +134,10 @@ export function Hero() {
             {site.anosProtesis} años de experiencia.
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+          {/* Oculto por debajo de `md`, que es justo donde vive la barra fija
+              inferior con Llamar y WhatsApp. Repetir el botón dentro del hero
+              no añadía un camino nuevo, solo tapaba la foto. */}
+          <div className="mt-8 hidden flex-col items-center gap-4 sm:flex-row sm:justify-center md:flex lg:justify-start">
             <WhatsAppButton
               size="lg"
               variant="onDark"

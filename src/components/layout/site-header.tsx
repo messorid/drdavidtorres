@@ -82,16 +82,10 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {/* Teléfono visible en móvil sin abrir el menú. */}
-          <a
-            href={`tel:${site.phone}`}
-            data-analytics="phone-click"
-            className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-line text-primary transition-colors duration-200 hover:bg-surface sm:hidden"
-            aria-label={`Llamar al ${site.phoneDisplay}`}
-          >
-            <Icon name="phone" className="h-5 w-5" />
-          </a>
-
+          {/* Aquí había un botón de llamada para móvil. Sobra: por debajo de
+              `md` la barra fija inferior ya ofrece "Llamar" de forma
+              permanente, y dos accesos al mismo teléfono en la misma
+              pantalla solo quitan aire a la cabecera. */}
           <span className="hidden sm:contents">
             <WhatsAppButton label="WhatsApp" />
           </span>

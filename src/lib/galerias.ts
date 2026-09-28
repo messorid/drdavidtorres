@@ -3,7 +3,12 @@ import type { Foto } from "@/components/ui/gallery";
 /**
  * Fotografías del trabajo real, agrupadas por dónde se muestran.
  *
- * Todo lo de aquí son fotos propias del consultorio. No hay imágenes de
+ * Todo lo de aquí son fotos propias del consultorio. Se retiró una imagen
+ * («prótesis en su molde de yeso») porque el archivo original que entregó el
+ * cliente lleva estampada la etiqueta de Instagram «Contenido generado por
+ * IA»: publicarla dentro de «cómo se hace una prótesis, paso a paso» la
+ * presentaba como documentación del trabajo real.
+ * No hay imágenes de
  * pacientes: las que entregó el cliente muestran rostros identificables junto
  * a su condición médica, y varias son de menores; publicarlas exige
  * consentimiento informado firmado. Están apartadas en
@@ -16,11 +21,6 @@ export const procesoProtesis: Foto[] = [
     src: "/img/galeria/proceso-1-impresion.jpg",
     alt: "Impresión de la cavidad recién retirada, sostenida con guantes",
     pie: "Se toma la impresión de la cavidad del propio paciente.",
-  },
-  {
-    src: "/img/galeria/proceso-2-molde.jpg",
-    alt: "Prótesis en su molde de yeso, aún sin terminar",
-    pie: "Sobre esa impresión se hace el molde en yeso.",
   },
   {
     src: "/img/galeria/proceso-3-pintado.jpg",
@@ -95,11 +95,6 @@ export const insumos: Foto[] = [
     src: "/img/galeria/op-1-moldes.jpg",
     alt: "Moldes de yeso y piezas de resina elaboradas en el taller",
     pie: "Piezas elaboradas a medida sobre molde propio.",
-  },
-  {
-    src: "/img/galeria/proceso-2-molde.jpg",
-    alt: "Conformador montado en su molde de yeso",
-    pie: "Conformadores para mantener la cavidad tras la cirugía.",
   },
   {
     src: "/img/galeria/vitrina-1.jpg",

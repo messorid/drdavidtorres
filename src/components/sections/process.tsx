@@ -78,12 +78,19 @@ export function Process() {
         })}
       </ol>
 
-      <div className="relative mt-12 aspect-[16/7] w-full overflow-hidden rounded-base bg-surface-alt sm:aspect-[21/7]">
+      {/* La banda es de 16:7 y el archivo también, así que no se recorta
+          nada en escritorio. Antes iba aquí una foto vertical de la prótesis
+          en su estuche: forzada a esta franja perdía el 60% del alto y se
+          veía cortada por arriba y por abajo. Esta es la única fotografía
+          original realmente panorámica (4000x1848), y además cuenta el paso
+          del que habla la sección. En móvil sube a 16:9 para que el sujeto
+          no quede en un hilo. */}
+      <div className="relative mt-12 aspect-[16/9] w-full overflow-hidden rounded-base bg-surface-alt sm:aspect-[16/7]">
         <Image
-          src="/img/consulta.jpg"
-          alt="Prótesis ocular terminada, presentada en su estuche"
+          src="/img/proceso-quirofano.jpg"
+          alt="El Dr. Torres en el quirófano, mirando por el microscopio durante una cirugía ocular"
           fill
-          sizes="(max-width: 1023px) 100vw, 860px"
+          sizes="(max-width: 1023px) 100vw, 1152px"
           className="object-cover"
         />
       </div>
