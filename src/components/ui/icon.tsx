@@ -26,6 +26,7 @@ export type IconName =
   | "mapPin"
   | "check"
   | "arrowRight"
+  | "arrowUp"
   | "chevronDown"
   | "menu"
   | "close"
@@ -117,6 +118,7 @@ const strokePaths: Partial<Record<IconName, React.ReactNode>> = {
   ),
   check: <path d="m4.5 12.8 4.8 4.7L19.5 6.5" />,
   arrowRight: <path d="M4 12h15m-6-6.5L19.5 12 13 18.5" />,
+  arrowUp: <path d="M12 20V5m-6.5 6.5L12 4.5l6.5 7" />,
   chevronDown: <path d="m5.5 9 6.5 6.5L18.5 9" />,
   menu: <path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17" />,
   close: <path d="m5.5 5.5 13 13m0-13-13 13" />,

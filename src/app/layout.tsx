@@ -6,6 +6,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
+import { BotonArriba } from "@/components/layout/boton-arriba";
 import { ScrollAlInicio } from "@/components/layout/scroll-al-inicio";
 import { JsonLd } from "@/components/json-ld";
 import { site } from "@/lib/site";
@@ -63,6 +64,7 @@ export default function RootLayout({
 
         <SiteFooter />
         <MobileCtaBar />
+        <BotonArriba />
 
         <JsonLd data={[centroSchema(), medicoSchema(), websiteSchema()]} />
         {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
