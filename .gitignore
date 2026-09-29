@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# La plantilla sí se versiona: documenta NEXT_PUBLIC_GA_ID, y de esa variable
+# depende lo que declara la política de cookies.
+!.env.example
 
 # vercel
 .vercel

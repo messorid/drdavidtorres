@@ -99,6 +99,14 @@ export function SiteFooter() {
             </li>
             <li>
               <Link
+                href="/cookies"
+                className="inline-flex min-h-[44px] cursor-pointer items-center text-sm text-muted underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
+              >
+                Política de cookies
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/accesibilidad"
                 className="inline-flex min-h-[44px] cursor-pointer items-center text-sm text-muted underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
               >

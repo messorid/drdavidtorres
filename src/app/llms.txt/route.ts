@@ -32,6 +32,7 @@ export function GET() {
     `- [Contacto](${canonical("/contacto")}): cómo agendar consulta y sedes de atención.`,
     `- [Accesibilidad](${canonical("/accesibilidad")}): compromiso y medidas implementadas.`,
     `- [Privacidad](${canonical("/privacidad")}): tratamiento de datos e información de salud.`,
+    `- [Cookies](${canonical("/cookies")}): qué guarda el navegador y cómo evitarlo.`,
     "",
     "## Sedes",
     "",

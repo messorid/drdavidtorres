@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
@@ -62,10 +63,16 @@ export default function PrivacyPage() {
           <h2 className="text-2xl font-bold text-ink">Cookies</h2>
           <p className="measure mt-4 text-muted">
             El sitio no usa cookies para publicidad ni para seguimiento entre
-            sitios. Si la analítica está activa, Google Analytics puede
-            almacenar identificadores de medición en tu navegador. Puedes
-            bloquearlos desde la configuración de tu navegador sin que el sitio
-            deje de funcionar.
+            sitios, y funciona igual con las cookies bloqueadas. El detalle —
+            cuáles se instalan exactamente en este momento, para qué y cuánto
+            duran — está en la{" "}
+            <Link
+              href="/cookies"
+              className="cursor-pointer font-medium text-primary underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
+            >
+              política de cookies
+            </Link>
+            .
           </p>
         </section>
 

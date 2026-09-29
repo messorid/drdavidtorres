@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/sobre-el-doctor", priority: 0.7 },
     { path: "/contacto", priority: 0.8 },
     { path: "/privacidad", priority: 0.2 },
+    { path: "/cookies", priority: 0.2 },
     { path: "/accesibilidad", priority: 0.2 },
   ];
 
