@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Icon } from "@/components/ui/icon";
-import { Carrusel } from "@/components/ui/carrusel";
-import type { Service } from "@/lib/services";
+import type { DatosTarjeta } from "@/lib/services";
 
 /**
  * Tarjeta de servicio con imagen. La imagen es decorativa respecto al enlace
@@ -16,7 +15,7 @@ export function ServiceCard({
   service,
   priority = false,
 }: {
-  service: Service;
+  service: DatosTarjeta;
   priority?: boolean;
 }) {
   return (
@@ -57,33 +56,5 @@ export function ServiceCard({
         </span>
       </div>
     </Link>
-  );
-}
-
-/**
- * Carrusel en móvil, rejilla desde `md`. El desplazamiento y los botones los
- * pone `Carrusel`; aquí sólo se decide cuánto ocupa cada tarjeta.
- */
-export function ServiceCarousel({
-  services,
-  label,
-}: {
-  services: Service[];
-  label: string;
-}) {
-  return (
-    <Carrusel
-      label={label}
-      listaClassName="flex snap-x snap-mandatory gap-4 md:grid md:snap-none md:grid-cols-2 md:gap-5 lg:grid-cols-3"
-    >
-      {services.map((service, i) => (
-        <li
-          key={service.slug}
-          className="flex w-[82%] shrink-0 snap-start sm:w-[58%] md:w-auto"
-        >
-          <ServiceCard service={service} priority={i === 0} />
-        </li>
-      ))}
-    </Carrusel>
   );
 }

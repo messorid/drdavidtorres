@@ -19,6 +19,7 @@ export type IconName =
   | "tools"
   | "pause"
   | "play"
+  | "search"
   | "whatsapp"
   | "phone"
   | "mail"
@@ -89,6 +90,12 @@ const strokePaths: Partial<Record<IconName, React.ReactNode>> = {
       <ellipse cx="9" cy="9.2" rx="5.4" ry="4.2" />
       <path d="M14.2 14.4a4.6 4.6 0 1 0 5.6 5.6 4.6 4.6 0 0 0-5.6-5.6Z" />
       <path d="M16.1 17.2h1.8" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="10.8" cy="10.8" r="6.8" />
+      <path d="m15.8 15.8 4.7 4.7" />
     </>
   ),
   pause: <path d="M9.5 4.5v15M14.5 4.5v15" />,

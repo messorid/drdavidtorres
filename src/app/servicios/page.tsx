@@ -4,17 +4,12 @@ import Image from "next/image";
 
 import { Icon } from "@/components/ui/icon";
 import { WhatsAppButton } from "@/components/ui/cta-button";
-import { ServiceCard } from "@/components/ui/service-card";
+import { ExploradorServicios } from "@/components/ui/explorador-servicios";
 import { Gallery } from "@/components/ui/gallery";
 import { FinalCta } from "@/components/sections/final-cta";
 import { JsonLd } from "@/components/json-ld";
 import { buildMetadata, canonical } from "@/lib/seo";
-import {
-  areaLabels,
-  services,
-  servicesByArea,
-  type Area,
-} from "@/lib/services";
+import { services, serviciosTarjeta } from "@/lib/services";
 import { breadcrumbSchema } from "@/lib/schema";
 import { procesoProtesis } from "@/lib/galerias";
 import { site } from "@/lib/site";
@@ -25,37 +20,6 @@ export const metadata: Metadata = buildMetadata({
     "Prótesis oculares con iris hiperrealistas, prótesis óculo-palpebrales, insumos quirúrgicos y cirugía de catarata, glaucoma y pterigión.",
   path: "/servicios",
 });
-
-/** Índice de servicios: el hub que enlaza a las nueve páginas. */
-function Bloque({ area }: { area: Area }) {
-  const { title, intro } = areaLabels[area];
-  const items = servicesByArea(area);
-
-  return (
-    <section className="border-t border-line bg-white first:border-t-0">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
-        <p className="font-heading text-xs font-semibold tracking-[0.22em] text-primary uppercase">
-          {area === "ocularista" ? "Ocularista" : "Oftalmología"}
-        </p>
-
-        <div className="mt-5">
-          <h2 className="text-2xl leading-tight font-bold tracking-[-0.01em] text-ink sm:text-[1.75rem]">
-            {title}
-          </h2>
-          <p className="measure mt-4 text-lg text-muted">{intro}</p>
-
-          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {items.map((service) => (
-              <li key={service.slug} className="flex">
-                <ServiceCard service={service} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 export default function ServiciosPage() {
   return (
@@ -113,8 +77,25 @@ export default function ServiciosPage() {
         />
       </div>
 
-      <Bloque area="oftalmologia" />
-      <Bloque area="ocularista" />
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+          <h2 className="text-2xl leading-tight font-bold tracking-[-0.01em] text-ink sm:text-[1.75rem]">
+            Los {services.length} servicios
+          </h2>
+          <p className="measure mt-4 text-lg text-muted">
+            Filtra por oficio o escribe lo que te pasa. El buscador entiende
+            también como lo dice la gente: «carnosidad» por pterigión, «ojo
+            artificial» por prótesis ocular.
+          </p>
+
+          <div className="mt-10">
+            <ExploradorServicios
+              servicios={serviciosTarjeta}
+              etiquetaCarrusel="Todos los servicios"
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="border-t border-line bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:py-20 lg:text-left">

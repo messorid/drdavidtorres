@@ -52,6 +52,14 @@ export type Service = {
   /** Texto alternativo de esa imagen. Describe la imagen, no repite el
    *  título del servicio. */
   imageAlt: string;
+  /** Términos por los que la gente busca esto, aunque no aparezcan escritos
+   *  en la página. Solo alimentan el buscador: nunca se muestran.
+   *
+   *  Únicamente sinónimos reales. No se mapea «orzuelo» a chalazión: un
+   *  orzuelo es una infección aguda y un chalazión un granuloma crónico, y
+   *  llevar a alguien de uno a otro es un error clínico, no una comodidad
+   *  de búsqueda. */
+  keywords?: string[];
   /** Etiqueta corta para la barra de navegación. */
   navLabel: string;
   /** Aparece en la navegación principal. */
@@ -119,6 +127,7 @@ export const services: Service[] = [
     imageHeroMobile: "/img/servicio-consulta-oftalmologica-movil.jpg",
     imageAlt:
       "Exploración del ojo con la lámpara de hendidura: el haz de luz ilumina el iris de la paciente",
+    keywords: ["examen de la vista", "revisión", "control", "ojo rojo", "visión borrosa", "agudeza visual"],
     navLabel: "Consulta",
     inNav: false,
   },
@@ -167,6 +176,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-cirugia-catarata-hero.jpg",
     imageAlt:
       "El Dr. Torres operando a través del microscopio quirúrgico",
+    keywords: ["cataratas", "lente intraocular", "facoemulsificación", "cristalino"],
     navLabel: "Catarata",
     inNav: false,
   },
@@ -215,6 +225,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-cirugia-glaucoma-hero.jpg",
     imageAlt:
       "Ilustración anatómica de un ojo en corte, con el cristalino y el nervio óptico",
+    keywords: ["presión ocular", "presión del ojo", "tensión ocular", "nervio óptico"],
     navLabel: "Glaucoma",
     inNav: false,
   },
@@ -262,6 +273,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-pterigion-hero.jpg",
     imageAlt:
       "Ilustración anatómica de un ojo con un pterigión avanzando hacia la córnea",
+    keywords: ["carnosidad", "pterigio"],
     navLabel: "Pterigión",
     inNav: false,
   },
@@ -313,6 +325,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-chalazion-hero.jpg",
     imageAlt:
       "Ilustración anatómica de un párpado de perfil con un chalazión en el borde",
+    keywords: ["bulto en el párpado", "quiste en el párpado", "chalazio"],
     navLabel: "Chalazión",
     inNav: false,
   },
@@ -371,6 +384,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-protesis-oculares-hero.jpg",
     imageAlt:
       "Prótesis ocular terminada, con el iris pintado a mano y los vasos de la esclera",
+    keywords: ["ojo artificial", "ojo postizo", "ojo de vidrio", "prótesis de ojo", "iris pintado"],
     navLabel: "Prótesis oculares",
     inNav: true,
   },
@@ -426,6 +440,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-protesis-oculo-palpebrales-hero.jpg",
     imageAlt:
       "Prótesis óculo-palpebral sostenida en la palma de la mano del doctor",
+    keywords: ["prótesis facial", "epítesis", "párpados", "oncológico"],
     navLabel: "Óculo-palpebrales",
     inNav: false,
   },
@@ -473,6 +488,7 @@ export const services: Service[] = [
     imageHero: "/img/servicio-rehabilitacion-cavidad-orbitaria-hero.jpg",
     imageAlt:
       "Impresión de la cavidad recién tomada, sostenida con guantes",
+    keywords: ["cavidad", "evisceración", "enucleación", "conformador"],
     navLabel: "Cavidad orbitaria",
     inNav: false,
   },
@@ -524,6 +540,7 @@ export const services: Service[] = [
     // una página dirigida a otros médicos.
     imageAlt:
       "Molde de yeso abierto sobre la mesa del taller, con la impresión de la cavidad",
+    keywords: ["conformador", "anillo de simbléfaro", "protector corneal", "PMMA", "implante orbitario", "colegas"],
     navLabel: "Insumos quirúrgicos",
     inNav: false,
   },
@@ -539,3 +556,54 @@ export const navServices = services.filter((s) => s.inNav);
 export function servicesByArea(area: Area): Service[] {
   return services.filter((s) => s.area === area);
 }
+
+/** Lo único que necesita una tarjeta. `ServiceCard` acepta esto y también
+ *  un `Service` completo. */
+export type DatosTarjeta = Pick<
+  Service,
+  "slug" | "name" | "cardLine" | "forWhom" | "icon" | "image" | "imageAlt"
+>;
+
+/** Quita acentos y pasa a minúsculas: aquí se busca «protesis» tanto como
+ *  «prótesis», y en un teclado de móvil lo primero es lo habitual. */
+export function normaliza(texto: string): string {
+  return texto
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .toLowerCase()
+    .trim();
+}
+
+export type ServicioTarjeta = DatosTarjeta & {
+  area: Area;
+  /** Texto ya normalizado contra el que busca el explorador. */
+  buscable: string;
+};
+
+/**
+ * Proyección que se manda al cliente. El explorador es un componente de
+ * cliente, así que todo lo que reciba viaja en el payload: pasarle los
+ * `Service` enteros arrastraría `sections`, `lead` y `metaDescription` de
+ * los nueve servicios sin que nadie los use. El índice de búsqueda se
+ * calcula aquí, en el servidor, una sola vez.
+ */
+export const serviciosTarjeta: ServicioTarjeta[] = services.map((s) => ({
+  slug: s.slug,
+  name: s.name,
+  area: s.area,
+  cardLine: s.cardLine,
+  forWhom: s.forWhom,
+  icon: s.icon,
+  image: s.image,
+  imageAlt: s.imageAlt,
+  buscable: normaliza(
+    [
+      s.name,
+      s.cardLine,
+      s.forWhom,
+      areaLabels[s.area].title,
+      ...s.includes,
+      ...(s.keywords ?? []),
+    ].join(" · "),
+  ),
+}));
