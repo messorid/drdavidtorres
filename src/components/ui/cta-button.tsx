@@ -12,8 +12,14 @@ import { whatsappUrl, site } from "@/lib/site";
 type Size = "md" | "lg";
 type Variant = "solid" | "outline" | "onDark";
 
+// `relative` no es decorativo: el aviso «(se abre en una ventana nueva)» va
+// con `sr-only`, que en Tailwind es `position:absolute`. Sin un ancestro
+// posicionado, ese span se coloca respecto al documento y, cuando el botón
+// vive dentro de un carrusel horizontal, ESCAPA del recorte del contenedor y
+// empuja la página: medido, 377 px de desplazamiento lateral en móvil.
+// Con `relative` el span queda anclado al propio botón y se recorta con él.
 const base =
-  "inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2.5 rounded-base font-heading font-semibold transition-colors duration-200";
+  "relative inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-2.5 rounded-base font-heading font-semibold transition-colors duration-200";
 
 const sizes: Record<Size, string> = {
   md: "px-5 py-2.5 text-base",
