@@ -52,7 +52,7 @@ export const productos: Producto[] = [
     uso: "Se usan en el postoperatorio para conservar la cavidad mientras cicatriza.",
     image: "/img/productos/conformadores-corneales.jpg",
     imageAlt:
-      "Tres conformadores corneales transparentes de distintos tamaños sobre un paño claro",
+      "Cuatro conformadores corneales transparentes, en forma de cúpula, sobre una superficie gris",
     whatsappMessage:
       "Hola Dr. Torres, le escribo como colega para encargar conformadores corneales. Necesito la siguiente medida y cantidad:",
   },

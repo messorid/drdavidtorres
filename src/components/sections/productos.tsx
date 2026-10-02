@@ -17,12 +17,11 @@ import { productos } from "@/lib/productos";
  * necesita para responder, y pedirlo en el propio mensaje ahorra la ida y
  * vuelta.
  *
- * Las imágenes van en `object-contain` sobre fondo claro: son fotos de objeto
- * con proporciones dispares — una apaisada, dos verticales — y recortarlas a
- * un marco común les cortaría la pieza, que es lo único que importa aquí.
- * El marco es cuadrado y no 4:3 por eso mismo: con dos verticales, en 4:3
- * la pieza ocupaba el 40% del ancho entre dos bandas grises; en 1:1 llena
- * más de la mitad, y la apaisada apenas pierde alto.
+ * Las tres fotos son apaisadas y casi 4:3 (1.33, 1.33 y 1.38), así que el
+ * marco es 4:3 con `object-cover`: las dos primeras encajan exactas y la
+ * tercera pierde un 4% de ancho por los lados, sin tocar la pieza. Si algún
+ * día entra una foto vertical, volver a `object-contain` antes que dejar
+ * que el recorte se coma el producto.
  */
 export function Productos() {
   return (
@@ -72,13 +71,13 @@ export function ListaProductos() {
           className="flex w-[82%] shrink-0 snap-start sm:w-[58%] md:w-[calc((100%-2.5rem)/3)]"
         >
           <article className="flex h-full flex-col overflow-hidden rounded-base border border-line bg-white">
-            <div className="relative aspect-square w-full bg-surface">
+            <div className="relative aspect-[4/3] w-full bg-surface">
               <Image
                 src={p.image}
                 alt={p.imageAlt}
                 fill
                 sizes="(max-width: 767px) 85vw, (max-width: 1023px) 58vw, 30vw"
-                className="object-contain"
+                className="object-cover"
               />
             </div>
 

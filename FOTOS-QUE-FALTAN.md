@@ -54,10 +54,9 @@ simbléfaro, cada uno con su ficha y su botón de encargo.
 
 Tres cosas quedaron pendientes de confirmar sobre ese material:
 
-- **`conformadores-corneales.jpg`** venía con el icono de Google Lens en una
-  esquina, es decir es una **captura de pantalla**, no el archivo original.
-  Se recortó el icono, pero si existe la foto original conviene usarla: se
-  vería bastante mejor.
+- ~~`conformadores-corneales.jpg` era una captura de pantalla con el icono de
+  Google Lens~~ — **resuelto**: se sustituyó por la toma de las cuatro cúpulas
+  sobre fondo gris que entregó el cliente.
 - En la misma carpeta había un **gráfico de catálogo** con conformadores de
   colores y las medidas 14, 18 y 21 mm rotuladas. No se publicó: tiene toda
   la pinta de ser material de un fabricante, y publicar una imagen ajena en
