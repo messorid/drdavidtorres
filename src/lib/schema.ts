@@ -1,4 +1,4 @@
-import { site, sedePrincipal } from "./site";
+import { site, sedePrincipal, mapsUrl } from "./site";
 import { services, type Service } from "./services";
 import { faqs } from "./faqs";
 import { canonical } from "./seo";
@@ -36,10 +36,17 @@ export function centroSchema() {
     name: site.name,
     alternateName: site.shortName,
     url: site.url,
+    // `image` y `logo` los exige Google para mostrar la ficha de negocio
+    // local enriquecida; sin ellos el resultado sale como un enlace simple.
+    logo: `${site.url}/icon.png`,
+    image: [`${site.url}/opengraph-image`, `${site.url}/img/doctor.jpg`],
     telephone: site.phone,
     email: site.email,
     medicalSpecialty: "Ophthalmologic",
     currenciesAccepted: "VES",
+    // Búsqueda en Maps con los datos confirmados, no coordenadas: las mismas
+    // razones que el botón «Cómo llegar».
+    hasMap: mapsUrl(sedePrincipal),
     // Schema.org admite una sola `address` por entidad: va la sede con más
     // días de consulta. Las demás se publican en la página y como `areaServed`.
     address: {
@@ -76,6 +83,7 @@ export function medicoSchema() {
     name: site.doctor,
     alternateName: site.shortName,
     url: canonical("/sobre-el-doctor"),
+    image: `${site.url}/img/doctor.jpg`,
     telephone: site.phone,
     email: site.email,
     medicalSpecialty: "Ophthalmologic",

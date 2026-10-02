@@ -19,7 +19,7 @@ export const metadata: Metadata = buildMetadata({
   // La home es el hub: marca + oftalmologia general + ambas ciudades.
   title: "Oftalmólogo y Ocularista en Barquisimeto | Dr. Torres",
   description:
-    "Centro Oftalmológico y Prótesis Oculares Dr. David Torres. Prótesis con iris hiperrealistas, cirugía de catarata, glaucoma y pterigión.",
+    "Oftalmólogo y ocularista en Acarigua y Barquisimeto. Prótesis oculares con iris pintado a mano, cirugía de catarata, glaucoma y pterigión.",
   path: "/",
 });
 

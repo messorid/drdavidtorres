@@ -23,6 +23,8 @@ type BuildArgs = {
   path: string;
   /** Solo para páginas que no deben indexarse. */
   noIndex?: boolean;
+  /** Ruta de la tarjeta para compartir. Por defecto, la general. */
+  image?: string;
 };
 
 export function buildMetadata({
@@ -30,10 +32,17 @@ export function buildMetadata({
   description,
   path,
   noIndex = false,
+  image = "/opengraph-image",
 }: BuildArgs): Metadata {
   const t = truncate(title, TITLE_MAX);
   const d = truncate(description, DESCRIPTION_MAX);
   const url = canonical(path);
+
+  // La imagen se declara SIEMPRE aquí. Los objetos `openGraph` de cada
+  // segmento se fusionan de forma superficial: en cuanto una página define el
+  // suyo, borra entero el heredado, imagen incluida. Así estaban 16 de las 17
+  // páginas, compartiéndose en WhatsApp sin miniatura.
+  const images = [{ url: image, width: 1200, height: 630, alt: t }];
 
   return {
     // Absoluto: el titulo ya viene completo con su marca. Sin esto, el
@@ -49,11 +58,13 @@ export function buildMetadata({
       siteName: site.name,
       locale: "es_VE",
       type: "website",
+      images,
     },
     twitter: {
       card: "summary_large_image",
       title: t,
       description: d,
+      images,
     },
   };
 }

@@ -18,6 +18,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Médico Cirujano y Oftalmólogo egresado de la UCLA, con 12 años elaborando prótesis oculares y certificación como ocularista en México, Colombia y Brasil.",
   path: "/sobre-el-doctor",
+  image: "/sobre-el-doctor/opengraph-image",
 });
 
 export default function AboutPage() {

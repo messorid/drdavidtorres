@@ -17,6 +17,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Implantes orbitarios de PMMA de 12 a 20 mm, conformadores corneales y anillos de simbléfaro, elaborados a medida para cirujanos oftalmólogos.",
   path: "/productos",
+  image: "/productos/opengraph-image",
 });
 
 /**
