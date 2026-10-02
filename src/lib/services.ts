@@ -533,13 +533,8 @@ export const services: Service[] = [
       "Hola Dr. Torres, quisiera consultar por insumos quirúrgicos oculares.",
     image: "/img/servicio-insumos-quirurgicos-oculares.jpg",
     imageHero: "/img/servicio-insumos-quirurgicos-oculares-hero.jpg",
-    // El cliente no tiene todavía ninguna fotografía de los insumos en sí
-    // (conformadores, protectores, anillos, implantes de PMMA). Se usa una
-    // pieza real del taller y el alt dice exactamente lo que es: describir
-    // un molde como si fuera un conformador sería una afirmación falsa en
-    // una página dirigida a otros médicos.
     imageAlt:
-      "Molde de yeso abierto sobre la mesa del taller, con la impresión de la cavidad",
+      "Tres implantes orbitarios porosos y tres conformadores transparentes, de distintos tamaños, sobre fondo gris claro",
     keywords: ["conformador", "anillo de simbléfaro", "protector corneal", "PMMA", "implante orbitario", "colegas"],
     navLabel: "Insumos quirúrgicos",
     inNav: false,

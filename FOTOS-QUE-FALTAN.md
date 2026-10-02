@@ -61,12 +61,14 @@ Tres cosas quedaron pendientes de confirmar sobre ese material:
   colores y las medidas 14, 18 y 21 mm rotuladas. No se publicó: tiene toda
   la pinta de ser material de un fabricante, y publicar una imagen ajena en
   la web de un cliente es un problema de derechos. Si es suyo, se añade.
-- La foto de los **anillos de simbléfaro** es un ojo de paciente. El encuadre
-  es cerrado —ojo y ceja, sin rostro— pero sigue siendo tejido de una
-  persona. Entra bajo el mismo consentimiento que el resto.
+- ~~La foto de los anillos de simbléfaro era un ojo de paciente~~ — **resuelto**:
+  se sustituyó por una toma de estudio del anillo colocado, sin paciente real.
 
-Lo que más mejoraría la sección ahora es **una foto propia de cada pieza
-sobre fondo liso**, con una regla o una moneda al lado para la escala.
+Las tres piezas y la foto de grupo tienen ya tomas limpias sobre fondo liso,
+que además sustituyen al molde de yeso que ilustraba la tarjeta de insumos.
+Son renders de estudio, no fotografías de las piezas del taller: funcionan
+como ilustración de producto, pero aplica la misma cautela de derechos que
+al resto de material que no es fotografía propia.
 
 ## C. Mejoras que suman, sin urgencia
 

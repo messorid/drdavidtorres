@@ -33,10 +33,10 @@ export function Productos() {
     >
       {/* Foto de apertura: enseña de un vistazo el conjunto, que es lo que un
           colega quiere ver antes de leer ficha por ficha. */}
-      <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-base bg-white sm:aspect-[1100/564]">
+      <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-base bg-white sm:aspect-[16/10]">
         <Image
           src="/img/productos/implantes-y-conformadores.jpg"
-          alt="Tres implantes orbitarios porosos y tres conformadores transparentes, de distintos tamaños, sobre la mesa de trabajo"
+          alt="Tres implantes orbitarios porosos de tamaño creciente y, delante, tres conformadores transparentes, sobre fondo gris claro"
           fill
           sizes="(max-width: 1023px) 100vw, 1152px"
           className="object-cover"

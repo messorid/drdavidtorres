@@ -41,7 +41,7 @@ export const productos: Producto[] = [
     medidas: "De 12 a 20 mm de diámetro",
     image: "/img/productos/implante-orbitario.jpg",
     imageAlt:
-      "Esfera de PMMA transparente sostenida entre los dedos, junto a la mesa de trabajo",
+      "Esfera transparente de PMMA sostenida entre dos dedos sobre fondo gris claro",
     whatsappMessage:
       "Hola Dr. Torres, le escribo como colega para encargar implantes orbitarios de PMMA. Necesito el siguiente diámetro y cantidad:",
   },
@@ -63,7 +63,7 @@ export const productos: Producto[] = [
     uso: "Indicados en simbléfaro y en pterigión de gran tamaño, para evitar que las superficies se adhieran.",
     image: "/img/productos/anillo-simblefaro.jpg",
     imageAlt:
-      "Anillo de simbléfaro colocado en el ojo, separando los párpados de la superficie ocular",
+      "Anillo de simbléfaro transparente colocado sobre el ojo, manteniendo los párpados separados de la superficie ocular",
     whatsappMessage:
       "Hola Dr. Torres, le escribo como colega para encargar anillos de simbléfaro. Necesito la siguiente medida y cantidad:",
   },

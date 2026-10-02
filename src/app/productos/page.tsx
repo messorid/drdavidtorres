@@ -86,10 +86,10 @@ export default function ProductosPage() {
       </header>
 
       <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-base bg-white sm:aspect-[1100/564]">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-base bg-white sm:aspect-[16/10]">
           <Image
             src="/img/productos/implantes-y-conformadores.jpg"
-            alt="Tres implantes orbitarios porosos y tres conformadores transparentes, de distintos tamaños, sobre la mesa de trabajo"
+            alt="Tres implantes orbitarios porosos de tamaño creciente y, delante, tres conformadores transparentes, sobre fondo gris claro"
             fill
             priority
             sizes="(max-width: 1199px) 100vw, 1152px"
