@@ -91,6 +91,14 @@ export function SiteFooter() {
           <ul className="mt-6 flex flex-col items-center md:items-start">
             <li>
               <Link
+                href="/productos"
+                className="inline-flex min-h-[44px] cursor-pointer items-center text-sm text-muted underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
+              >
+                Productos para colegas
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/privacidad"
                 className="inline-flex min-h-[44px] cursor-pointer items-center text-sm text-muted underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
               >

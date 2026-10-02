@@ -30,6 +30,7 @@ export function GET() {
     `- [Servicios](${canonical("/servicios")}): índice completo de los nueve servicios.`,
     `- [Sobre el doctor](${canonical("/sobre-el-doctor")}): formación y enfoque de trabajo.`,
     `- [Contacto](${canonical("/contacto")}): cómo agendar consulta y sedes de atención.`,
+    `- [Productos](${canonical("/productos")}): insumos quirúrgicos que se elaboran por encargo para otros cirujanos.`,
     `- [Accesibilidad](${canonical("/accesibilidad")}): compromiso y medidas implementadas.`,
     `- [Privacidad](${canonical("/privacidad")}): tratamiento de datos e información de salud.`,
     `- [Cookies](${canonical("/cookies")}): qué guarda el navegador y cómo evitarlo.`,

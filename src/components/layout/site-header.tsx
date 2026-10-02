@@ -18,6 +18,13 @@ const navLinks = [
     label: s.navLabel,
     longLabel: s.name,
   })),
+  // Va con etiqueta corta en la barra y con el apellido completo en el menú
+  // móvil: «Productos» a secas no dice a quién va dirigido.
+  {
+    href: "/productos",
+    label: "Productos",
+    longLabel: "Productos para colegas",
+  },
   {
     href: "/sobre-el-doctor",
     label: "Sobre el doctor",

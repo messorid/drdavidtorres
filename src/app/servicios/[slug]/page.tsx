@@ -8,6 +8,7 @@ import { WhatsAppButton, InternalCta } from "@/components/ui/cta-button";
 import { FinalCta } from "@/components/sections/final-cta";
 import { ServiceCard } from "@/components/ui/service-card";
 import { Gallery } from "@/components/ui/gallery";
+import { ListaProductos } from "@/components/sections/productos";
 import { CasosGrid } from "@/components/ui/before-after";
 import { JsonLd } from "@/components/json-ld";
 import { buildMetadata } from "@/lib/seo";
@@ -218,6 +219,24 @@ export default async function ServicePage({
                     label="El proceso con el paciente en consulta"
                     columnas={3}
                   />
+                </div>
+              </section>
+            ) : null}
+
+            {/* Las fichas de producto solo en la página de insumos: es la
+                única dirigida a colegas, y es donde alguien llega ya
+                buscando encargar una pieza. */}
+            {service.slug === "insumos-quirurgicos-oculares" ? (
+              <section className="mt-14">
+                <h2 className="text-2xl font-bold text-ink">
+                  Las piezas, una por una
+                </h2>
+                <p className="measure mt-4 text-muted">
+                  Cada una se fabrica a la medida que se indique. El precio se
+                  cotiza por encargo, según medida y cantidad.
+                </p>
+                <div className="mt-8">
+                  <ListaProductos />
                 </div>
               </section>
             ) : null}

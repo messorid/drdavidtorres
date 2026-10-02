@@ -5,6 +5,7 @@ import { ServicesGrid } from "@/components/sections/services-grid";
 import { DoctorPreview } from "@/components/sections/doctor-preview";
 import { Casos } from "@/components/sections/casos";
 import { Process } from "@/components/sections/process";
+import { Productos } from "@/components/sections/productos";
 import { Areas } from "@/components/sections/areas";
 import { FaqSection } from "@/components/sections/faq-section";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -31,6 +32,7 @@ export default function HomePage() {
       <Casos />
       <DoctorPreview />
       <Process />
+      <Productos />
       <Areas />
       <FaqSection />
       <FinalCta />

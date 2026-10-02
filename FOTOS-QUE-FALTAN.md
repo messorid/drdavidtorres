@@ -46,21 +46,28 @@ así explican la patología sin hacerse pasar por un caso del consultorio.
 Si algún día hay fotografía clínica real de esos procedimientos, sustituye a
 la ilustración sin más.
 
-## B bis. Los insumos quirúrgicos — la que más falta hace ahora
+## B bis. Los insumos quirúrgicos — RESUELTO
 
-No hay **ninguna** fotografía de los insumos en sí. La página que se dirige a
-otros cirujanos ofrece conformadores, protectores corneales, anillos de
-simbléfaro e implantes de PMMA, y la ilustra un molde de yeso del taller,
-porque es lo más cercano que hay. Un colega que entra a encargar piezas no ve
-la pieza.
+El doctor subió al Drive las fotos de las piezas, y ya están publicadas: los
+implantes orbitarios de PMMA, los conformadores corneales y los anillos de
+simbléfaro, cada uno con su ficha y su botón de encargo.
 
-Es la foto más fácil de todas y la que más vende:
+Tres cosas quedaron pendientes de confirmar sobre ese material:
 
-| Archivo | Qué fotografiar |
-|---|---|
-| `public/img/servicio-insumos-quirurgicos-oculares.jpg` | Las piezas **puestas en fila sobre fondo liso** (una cartulina negra o blanca vale): un conformador, un protector corneal, un anillo de simbléfaro y un implante de PMMA, con una regla o una moneda al lado para que se entienda el tamaño. **Horizontal**, luz de ventana, sin flash. |
+- **`conformadores-corneales.jpg`** venía con el icono de Google Lens en una
+  esquina, es decir es una **captura de pantalla**, no el archivo original.
+  Se recortó el icono, pero si existe la foto original conviene usarla: se
+  vería bastante mejor.
+- En la misma carpeta había un **gráfico de catálogo** con conformadores de
+  colores y las medidas 14, 18 y 21 mm rotuladas. No se publicó: tiene toda
+  la pinta de ser material de un fabricante, y publicar una imagen ajena en
+  la web de un cliente es un problema de derechos. Si es suyo, se añade.
+- La foto de los **anillos de simbléfaro** es un ojo de paciente. El encuadre
+  es cerrado —ojo y ceja, sin rostro— pero sigue siendo tejido de una
+  persona. Entra bajo el mismo consentimiento que el resto.
 
-Con esa toma se resuelven la tarjeta y la cabecera de la página.
+Lo que más mejoraría la sección ahora es **una foto propia de cada pieza
+sobre fondo liso**, con una regla o una moneda al lado para la escala.
 
 ## C. Mejoras que suman, sin urgencia
 
