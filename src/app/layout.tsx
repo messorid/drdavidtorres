@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
 import { BotonArriba } from "@/components/layout/boton-arriba";
 import { ScrollAlInicio } from "@/components/layout/scroll-al-inicio";
+import { MedicionClics } from "@/components/layout/medicion-clics";
 import { JsonLd } from "@/components/json-ld";
 import { site } from "@/lib/site";
 import { centroSchema, medicoSchema, websiteSchema } from "@/lib/schema";
@@ -67,7 +68,12 @@ export default function RootLayout({
         <BotonArriba />
 
         <JsonLd data={[centroSchema(), medicoSchema(), websiteSchema()]} />
-        {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
+        {gaId ? (
+          <>
+            <GoogleAnalytics gaId={gaId} />
+            <MedicionClics />
+          </>
+        ) : null}
       </body>
     </html>
   );
