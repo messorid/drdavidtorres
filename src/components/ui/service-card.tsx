@@ -10,6 +10,11 @@ import type { DatosTarjeta } from "@/lib/services";
  *
  * `sizes` refleja el ancho real que ocupa la tarjeta en cada punto de corte:
  * sin eso, Next serviría a un teléfono la misma imagen que a un escritorio.
+ *
+ * El «Ver detalle» va con `mt-auto`: las tarjetas de una misma fila se
+ * estiran a la misma altura, pero el texto de cada una mide distinto, y sin
+ * esto el enlace quedaba a alturas diferentes y las cortas dejaban un hueco
+ * muerto debajo. Anclado al pie, los tres enlaces forman una línea.
  */
 export function ServiceCard({
   service,
@@ -50,7 +55,7 @@ export function ServiceCard({
           {service.forWhom}
         </p>
 
-        <span className="mt-4 inline-flex items-center gap-1.5 self-start pt-1 font-heading text-sm font-semibold text-primary transition-colors duration-200 group-hover:text-primary-dark">
+        <span className="mt-auto inline-flex items-center gap-1.5 self-start pt-5 font-heading text-sm font-semibold text-primary transition-colors duration-200 group-hover:text-primary-dark">
           Ver detalle
           <Icon name="arrowRight" className="h-4 w-4" />
         </span>

@@ -20,6 +20,9 @@ import { productos } from "@/lib/productos";
  * Las imágenes van en `object-contain` sobre fondo claro: son fotos de objeto
  * con proporciones dispares — una apaisada, dos verticales — y recortarlas a
  * un marco común les cortaría la pieza, que es lo único que importa aquí.
+ * El marco es cuadrado y no 4:3 por eso mismo: con dos verticales, en 4:3
+ * la pieza ocupaba el 40% del ancho entre dos bandas grises; en 1:1 llena
+ * más de la mitad, y la apaisada apenas pierde alto.
  */
 export function Productos() {
   return (
@@ -28,7 +31,6 @@ export function Productos() {
       label="Para colegas"
       title="Insumos que se elaboran por encargo"
       intro="Esta parte es para cirujanos oftalmólogos. Las piezas se fabrican en el taller del consultorio, a la medida que indique quien las encarga."
-      tone="paper"
     >
       {/* Foto de apertura: enseña de un vistazo el conjunto, que es lo que un
           colega quiere ver antes de leer ficha por ficha. */}
@@ -70,7 +72,7 @@ export function ListaProductos() {
           className="flex w-[82%] shrink-0 snap-start sm:w-[58%] md:w-[calc((100%-2.5rem)/3)]"
         >
           <article className="flex h-full flex-col overflow-hidden rounded-base border border-line bg-white">
-            <div className="relative aspect-[4/3] w-full bg-surface">
+            <div className="relative aspect-square w-full bg-surface">
               <Image
                 src={p.image}
                 alt={p.imageAlt}

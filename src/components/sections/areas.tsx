@@ -46,22 +46,6 @@ export function Areas() {
                 <p className="mt-1 text-sm text-muted">{sede.nota}</p>
               ) : null}
 
-              {/* Abre en pestaña nueva porque saca al visitante a Maps, y a
-                  menudo a la app del teléfono: si sustituyera la página, al
-                  volver perdería dónde estaba leyendo. */}
-              <a
-                href={mapsUrl(sede)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-base border border-line bg-white px-4 py-2 font-heading text-sm font-semibold text-primary transition-colors duration-200 hover:border-primary hover:text-primary-dark"
-              >
-                <Icon name="mapPin" className="h-4 w-4 shrink-0" />
-                Cómo llegar
-                <span className="sr-only">
-                  a {sede.lugar}, {sede.ciudad}. Google Maps, se abre en una
-                  pestaña nueva
-                </span>
-              </a>
             </div>
 
             <p className="flex items-start gap-2 text-sm font-medium text-ink md:col-span-3 md:justify-end md:text-right">
@@ -71,6 +55,30 @@ export function Areas() {
               />
               {sede.horario}
             </p>
+
+            {/* Último en el DOM a propósito. En móvil, el horario es el dato
+                que decide el viaje y tiene que leerse antes que el botón; en
+                escritorio el botón se coloca bajo la dirección, en la
+                segunda fila de la rejilla, que es donde ya estaba.
+
+                Abre en pestaña nueva porque saca al visitante a Maps, y a
+                menudo a la app del teléfono: si sustituyera la página, al
+                volver perdería dónde estaba leyendo. */}
+            <div className="md:col-span-5 md:col-start-5 md:-mt-1">
+              <a
+                href={mapsUrl(sede)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-base border border-line bg-white px-4 py-2 font-heading text-sm font-semibold text-primary transition-colors duration-200 hover:border-primary hover:text-primary-dark"
+              >
+                <Icon name="mapPin" className="h-4 w-4 shrink-0" />
+                Cómo llegar
+                <span className="sr-only">
+                  a {sede.lugar}, {sede.ciudad}. Google Maps, se abre en una
+                  pestaña nueva
+                </span>
+              </a>
+            </div>
           </li>
         ))}
       </ul>

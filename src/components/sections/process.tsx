@@ -35,7 +35,11 @@ const steps = [
  */
 export function Process() {
   return (
-    <Section label="Proceso" title="Cómo es el proceso desde que escribes">
+    <Section
+      label="Proceso"
+      title="Cómo es el proceso desde que escribes"
+      tone="paper"
+    >
       <ol className="md:flex md:gap-8">
         {steps.map((step, i) => {
           const ultimo = i === steps.length - 1;

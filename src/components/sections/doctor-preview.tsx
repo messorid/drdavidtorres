@@ -25,7 +25,6 @@ export function DoctorPreview() {
       label="El especialista"
       title="Quién te atiende"
       intro="Médico Cirujano y Oftalmólogo egresado de la UCLA, profesor universitario y ex director del Hospital de Sarare. Su trabajo une dos oficios que rara vez van juntos: la cirugía ocular y la elaboración artesanal de prótesis."
-      tone="paper"
     >
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-10">
         <div>

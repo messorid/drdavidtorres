@@ -24,11 +24,15 @@ import { Icon } from "@/components/ui/icon";
 export function Carrusel({
   label,
   listaClassName,
+  cabecera,
   children,
 }: {
   label: string;
   /** Clases de la `<ul>`: define el ancho de cada ítem y la rejilla final. */
   listaClassName: string;
+  /** Lo que va a la izquierda de los botones, en su misma fila: un recuento,
+   *  una nota. Así no quedan dos filas sueltas una encima de otra. */
+  cabecera?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const pista = useRef<HTMLDivElement>(null);
@@ -88,18 +92,23 @@ export function Carrusel({
     <div>
       {/* Los botones se reservan su fila sólo cuando hacen falta: si el
           contenido cabe entero, no hay nada que desplazar. */}
-      {desbordado ? (
-        <div className="mb-4 flex justify-center gap-2 lg:justify-end">
-          <BotonPista
-            sentido="anterior"
-            onClick={() => mover(-1)}
-            disabled={enInicio}
-          />
-          <BotonPista
-            sentido="siguiente"
-            onClick={() => mover(1)}
-            disabled={enFin}
-          />
+      {desbordado || cabecera ? (
+        <div className="mb-4 flex flex-col items-center gap-3 lg:flex-row lg:items-center lg:justify-between">
+          <div className="min-w-0 text-center lg:text-left">{cabecera}</div>
+          {desbordado ? (
+            <div className="flex shrink-0 gap-2">
+              <BotonPista
+                sentido="anterior"
+                onClick={() => mover(-1)}
+                disabled={enInicio}
+              />
+              <BotonPista
+                sentido="siguiente"
+                onClick={() => mover(1)}
+                disabled={enFin}
+              />
+            </div>
+          ) : null}
         </div>
       ) : null}
 

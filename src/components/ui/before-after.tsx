@@ -53,10 +53,14 @@ export function BeforeAfter({ caso }: { caso: Caso }) {
 }
 
 export function CasosGrid({ casos, label }: { casos: Caso[]; label: string }) {
+  // Con tres pares, tres columnas: en dos, el tercero quedaba solo junto a
+  // una celda vacía y la sección parecía sin terminar. Tres columnas casan
+  // además con la fila de «otros resultados» que va justo debajo.
+  const columnas = casos.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2";
   return (
     <Carrusel
       label={label}
-      listaClassName="flex snap-x snap-mandatory gap-4 lg:grid lg:snap-none lg:grid-cols-2 lg:gap-6"
+      listaClassName={`flex snap-x snap-mandatory gap-4 lg:grid lg:snap-none ${columnas} lg:gap-6`}
     >
       {casos.map((caso) => (
         <li key={caso.id} className="w-[88%] shrink-0 snap-start lg:w-auto">

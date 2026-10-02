@@ -146,19 +146,24 @@ export function ExploradorServicios({
 
       {/* Región viva: quien usa lector de pantalla necesita enterarse de que
           la lista cambió al escribir, porque el cambio ocurre lejos del foco. */}
-      <p
-        aria-live="polite"
-        className="mt-5 text-center text-sm text-muted lg:text-left"
-      >
-        {visibles.length === 0
-          ? "Ningún servicio coincide con esa búsqueda."
-          : `${visibles.length} ${visibles.length === 1 ? "servicio" : "servicios"}`}
-        {hayFiltro && visibles.length > 0 ? ` de ${servicios.length}` : ""}
-      </p>
+      {/* El recuento va en la misma fila que los botones del carrusel, no en
+          una línea propia: eran dos filas sueltas con 50 px de aire entre
+          medias. Sigue siendo región viva, se renderice donde se renderice. */}
+      {visibles.length === 0 ? (
+        <p aria-live="polite" className="mt-5 text-center text-sm text-muted lg:text-left">
+          Ningún servicio coincide con esa búsqueda.
+        </p>
+      ) : null}
 
       {visibles.length > 0 ? (
         <div className="mt-6">
           <Carrusel
+            cabecera={
+              <p aria-live="polite" className="text-sm text-muted">
+                {visibles.length} {visibles.length === 1 ? "servicio" : "servicios"}
+                {hayFiltro ? ` de ${servicios.length}` : ""}
+              </p>
+            }
             // Al cambiar el conjunto se vuelve a montar: así el carrusel
             // recalcula si desborda —los ítems cambian de número sin que
             // cambie el tamaño de la pista, que es lo único que observa— y
