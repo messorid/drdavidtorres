@@ -10,6 +10,7 @@ import { ServiceCard } from "@/components/ui/service-card";
 import { Gallery } from "@/components/ui/gallery";
 import { ListaProductos } from "@/components/sections/productos";
 import { CasosGrid } from "@/components/ui/before-after";
+import { Visor } from "@/components/ui/visor";
 import { JsonLd } from "@/components/json-ld";
 import { buildMetadata } from "@/lib/seo";
 import { services, getService } from "@/lib/services";
@@ -201,10 +202,12 @@ export default async function ServicePage({
                   que se puede lograr.
                 </p>
                 <div className="mt-8">
-                  <CasosGrid
-                    casos={[caso]}
-                    label="Caso real, antes y después"
-                  />
+                  <Visor>
+                    <CasosGrid
+                      casos={[caso]}
+                      label="Caso real, antes y después"
+                    />
+                  </Visor>
                 </div>
               </section>
             ) : null}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Carrusel } from "@/components/ui/carrusel";
+import { Ampliable } from "@/components/ui/visor";
 
 export type Caso = {
   id: string;
@@ -28,13 +29,19 @@ export function BeforeAfter({ caso }: { caso: Caso }) {
       <div className="grid grid-cols-2 gap-3 sm:gap-4">
         {[caso.antes, caso.despues].map((foto, i) => (
           <div key={foto.src}>
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-base bg-surface-alt">
+            <Ampliable
+              src={foto.src}
+              alt={foto.alt}
+              pie={`${caso.titulo}. ${foto.pie}`}
+              etiqueta={i === 0 ? "Antes" : "Después"}
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-base bg-surface-alt"
+            >
               <Image
                 src={foto.src}
-                alt={foto.alt}
+                alt=""
                 fill
                 sizes="(max-width: 767px) 42vw, (max-width: 1023px) 30vw, 22vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover/amp:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover/amp:scale-100"
               />
               <span
                 className={`absolute top-2 left-2 rounded px-2 py-1 font-heading text-xs font-semibold tracking-wide uppercase ${
@@ -43,7 +50,7 @@ export function BeforeAfter({ caso }: { caso: Caso }) {
               >
                 {i === 0 ? "Antes" : "Después"}
               </span>
-            </div>
+            </Ampliable>
             <p className="mt-2 text-sm text-muted">{foto.pie}</p>
           </div>
         ))}

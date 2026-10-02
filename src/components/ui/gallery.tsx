@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Carrusel } from "@/components/ui/carrusel";
+import { Ampliable } from "@/components/ui/visor";
 
 export type Foto = { src: string; alt: string; pie?: string };
 
@@ -18,11 +19,14 @@ export function Gallery({
   label,
   columnas = 4,
   numerada = false,
+  ampliable = false,
 }: {
   fotos: Foto[];
   label: string;
   columnas?: 2 | 3 | 4;
   numerada?: boolean;
+  /** Las fotos abren el visor. Requiere un `<Visor>` alrededor. */
+  ampliable?: boolean;
 }) {
   const cols =
     columnas === 2
@@ -42,13 +46,13 @@ export function Gallery({
           className="w-[78%] shrink-0 snap-start sm:w-[46%] md:w-auto"
         >
           <figure className="h-full">
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-base bg-surface-alt">
+            <Marco ampliable={ampliable} foto={foto}>
               <Image
                 src={foto.src}
-                alt={foto.alt}
+                alt={ampliable ? "" : foto.alt}
                 fill
                 sizes="(max-width: 767px) 78vw, (max-width: 1023px) 45vw, 25vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover/amp:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover/amp:scale-100"
               />
               {numerada ? (
                 <span
@@ -58,7 +62,7 @@ export function Gallery({
                   {i + 1}
                 </span>
               ) : null}
-            </div>
+            </Marco>
             {foto.pie ? (
               <figcaption className="mt-2 text-sm text-muted">
                 {foto.pie}
@@ -68,5 +72,32 @@ export function Gallery({
         </li>
       ))}
     </Carrusel>
+  );
+}
+
+const marco =
+  "relative aspect-[3/2] w-full overflow-hidden rounded-base bg-surface-alt";
+
+/** El mismo marco, como botón que abre el visor o como caja sin más. */
+function Marco({
+  ampliable,
+  foto,
+  children,
+}: {
+  ampliable: boolean;
+  foto: Foto;
+  children: React.ReactNode;
+}) {
+  return ampliable ? (
+    <Ampliable
+      src={foto.src}
+      alt={foto.alt}
+      pie={foto.pie ?? ""}
+      className={marco}
+    >
+      {children}
+    </Ampliable>
+  ) : (
+    <div className={marco}>{children}</div>
   );
 }

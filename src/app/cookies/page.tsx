@@ -19,10 +19,10 @@ export const metadata: Metadata = buildMetadata({
  * cookies» de costumbre. Si mañana se activa la analítica, basta con volver
  * a compilar para que esta página cambie sola.
  *
- * PENDIENTE DE DECISIÓN DEL CLIENTE: hoy no hay banner de consentimiento. Con
- * el público real del consultorio (Portuguesa y Lara) no hace falta, pero si
- * el sitio empieza a recibir visitas de la Unión Europea, el RGPD exige pedir
- * permiso ANTES de cargar Google Analytics, no solo informar aquí.
+ * SIN BANNER DE CONSENTIMIENTO, por decisión del cliente (octubre de 2026):
+ * el sitio no espera visitas de la Unión Europea, y para el público real
+ * —Portuguesa y Lara— informar aquí es lo que corresponde. Si eso cambiara,
+ * el RGPD exigiría pedir permiso ANTES de cargar Google Analytics.
  */
 
 const gaActiva = Boolean(process.env.NEXT_PUBLIC_GA_ID);
