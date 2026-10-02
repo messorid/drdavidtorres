@@ -31,6 +31,20 @@ export const casosAntesDespues: Caso[] = [
     },
   },
   {
+    id: "protesis-ocular-adulto",
+    titulo: "Prótesis ocular personalizada",
+    antes: {
+      src: "/img/casos/caso3-antes.jpg",
+      alt: "Rostro de un paciente adulto con la cavidad ocular izquierda abierta y sin prótesis",
+      pie: "Cavidad sin prótesis.",
+    },
+    despues: {
+      src: "/img/casos/caso3-despues.jpg",
+      alt: "El mismo paciente con la prótesis ocular colocada y los dos ojos simétricos",
+      pie: "Con la prótesis colocada.",
+    },
+  },
+  {
     id: "oculo-palpebral",
     titulo: "Prótesis óculo-palpebral",
     antes: {
@@ -46,7 +60,16 @@ export const casosAntesDespues: Caso[] = [
   },
 ];
 
-/** Resultados en los que solo hay foto con la prótesis ya puesta. */
+/**
+ * Resultados en los que solo hay foto con la prótesis ya puesta.
+ *
+ * Aquí estaba `resultado-4.jpg` con el pie «Prótesis ocular personalizada»,
+ * pero esa fotografía muestra la cavidad ABIERTA Y SIN PRÓTESIS: era el
+ * «antes», no un resultado. Al llegar su «después» se emparejaron y pasaron
+ * a `casosAntesDespues`. Una foto de una cavidad sin tratar presentada como
+ * trabajo terminado es justo la afirmación falsa que esta sección no puede
+ * permitirse.
+ */
 export const resultados: Foto[] = [
   {
     src: "/img/casos/resultado-1.jpg",
@@ -62,11 +85,6 @@ export const resultados: Foto[] = [
     src: "/img/casos/resultado-2.jpg",
     alt: "Paciente con su prótesis óculo-palpebral colocada",
     pie: "Prótesis óculo-palpebral.",
-  },
-  {
-    src: "/img/casos/resultado-4.jpg",
-    alt: "Paciente con su prótesis ocular colocada",
-    pie: "Prótesis ocular personalizada.",
   },
 ];
 

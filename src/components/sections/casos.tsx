@@ -33,7 +33,7 @@ export function Casos() {
         <Gallery
           fotos={resultados}
           label="Pacientes con su prótesis colocada"
-          columnas={4}
+          columnas={resultados.length <= 3 ? 3 : 4}
         />
       </div>
 
