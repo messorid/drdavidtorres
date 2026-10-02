@@ -12,9 +12,22 @@ export const site = {
   doctor: "Dr. David Alejandro Torres Rivas",
   role: "Cirujano · Oftalmólogo · Ocularista",
 
-  /* PENDIENTE CLIENTE — dominio definitivo. Cambiarlo aquí actualiza
-     canonical, sitemap, robots, JSON-LD y Open Graph en todo el sitio. */
-  url: "https://drdavidtorres.com",
+  /* Dominio del sitio. De aquí salen canonical, sitemap, robots, JSON-LD y
+     Open Graph, así que tiene que coincidir con la URL donde vive de verdad:
+     un canonical apuntando a otro dominio es la forma más rápida de no
+     indexarse.
+
+     Se lee de `NEXT_PUBLIC_SITE_URL` para poder desplegar antes de tener el
+     dominio definitivo — en Vercel se configura con la URL del despliegue y
+     el día que haya dominio propio se cambia esa variable y nada más.
+
+     `NEXT_PUBLIC_` y no una variable de servidor a propósito: este módulo lo
+     importan también componentes de cliente, y una variable sin ese prefijo
+     llegaría como `undefined` al navegador y provocaría una discrepancia de
+     hidratación. */
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL || "https://drdavidtorres.com"
+  ).replace(/\/+$/, ""),
 
   phone: "+584248099305",
   phoneDisplay: "0424-8099305",
