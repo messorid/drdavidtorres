@@ -45,46 +45,79 @@ export const casosAntesDespues: Caso[] = [
     },
   },
   {
-    id: "oculo-palpebral",
-    titulo: "Prótesis óculo-palpebral",
+    id: "protesis-ocular-joven",
+    titulo: "Prótesis ocular personalizada",
     antes: {
-      src: "/img/casos/caso2-antes.jpg",
-      alt: "Rostro de una paciente con la cavidad orbitaria expuesta tras la cirugía",
-      pie: "Cavidad tras la cirugía, sin párpados.",
+      src: "/img/casos/resultado-3-antes.jpg",
+      alt: "Paciente joven con el párpado derecho caído, antes de la prótesis",
+      pie: "Antes de la prótesis.",
     },
     despues: {
-      src: "/img/casos/caso2-despues.jpg",
-      alt: "La misma paciente con la prótesis óculo-palpebral colocada",
-      pie: "Con la prótesis de ojo y párpados colocada.",
+      src: "/img/casos/resultado-3-despues.jpg",
+      alt: "La misma paciente con la prótesis ocular colocada y los dos ojos abiertos",
+      pie: "Con la prótesis colocada.",
     },
   },
-];
-
-/**
- * Resultados en los que solo hay foto con la prótesis ya puesta.
- *
- * Aquí estaba `resultado-4.jpg` con el pie «Prótesis ocular personalizada»,
- * pero esa fotografía muestra la cavidad ABIERTA Y SIN PRÓTESIS: era el
- * «antes», no un resultado. Al llegar su «después» se emparejaron y pasaron
- * a `casosAntesDespues`. Una foto de una cavidad sin tratar presentada como
- * trabajo terminado es justo la afirmación falsa que esta sección no puede
- * permitirse.
- */
-export const resultados: Foto[] = [
   {
-    src: "/img/casos/resultado-1.jpg",
-    alt: "Paciente joven con su prótesis ocular colocada",
-    pie: "Prótesis ocular personalizada.",
+    id: "protesis-ocular-nina",
+    titulo: "Prótesis ocular personalizada",
+    antes: {
+      src: "/img/casos/resultado-5-antes.jpg",
+      alt: "Paciente joven antes de la prótesis, con el párpado izquierdo caído",
+      pie: "Antes de la prótesis.",
+    },
+    despues: {
+      src: "/img/casos/resultado-5-despues.jpg",
+      alt: "La misma paciente con su prótesis ocular colocada y gafas",
+      pie: "Con la prótesis colocada.",
+    },
   },
   {
-    src: "/img/casos/resultado-3.jpg",
-    alt: "Paciente adolescente con su prótesis ocular colocada",
-    pie: "Prótesis ocular personalizada.",
+    id: "protesis-ocular-adulto-joven",
+    titulo: "Prótesis ocular personalizada",
+    antes: {
+      src: "/img/casos/resultado-7-antes.jpg",
+      alt: "Paciente adulto joven con el ojo derecho blanquecino y opaco",
+      pie: "Ojo con la córnea opaca, sin prótesis.",
+    },
+    despues: {
+      src: "/img/casos/resultado-7-despues.jpg",
+      alt: "El mismo paciente con la prótesis colocada y los dos ojos de aspecto igual",
+      pie: "Con la prótesis colocada.",
+    },
   },
   {
-    src: "/img/casos/resultado-2.jpg",
-    alt: "Paciente con su prótesis óculo-palpebral colocada",
-    pie: "Prótesis óculo-palpebral.",
+    id: "oculo-palpebral",
+    titulo: "Prótesis óculo-palpebral",
+    // Las fotos de este caso son del proceso, no del punto de partida: el
+    // «antes» muestra la toma de impresión y el «después» la prueba en
+    // consulta. Los pies dicen eso y nada más.
+    antes: {
+      src: "/img/casos/caso2-impresion.jpg",
+      alt: "Paciente con los ojos cerrados y material de impresión naranja aplicado alrededor de la órbita derecha",
+      pie: "Toma de impresión alrededor de la órbita.",
+    },
+    despues: {
+      src: "/img/casos/caso2-prueba.jpg",
+      alt: "La misma paciente con la prótesis óculo-palpebral colocada, mientras se ajusta en consulta",
+      pie: "Prueba de la prótesis de ojo y párpados en consulta.",
+    },
+  },
+  {
+    id: "oculo-palpebral-adulto",
+    titulo: "Prótesis óculo-palpebral",
+    // El «después» es la prueba de la pieza sobre la órbita, todavía sin
+    // terminar: el pie lo dice así en lugar de presentarla como resultado.
+    antes: {
+      src: "/img/casos/resultado-6-antes.jpg",
+      alt: "Paciente mayor con la órbita izquierda cerrada y sin ojo",
+      pie: "Órbita sin prótesis.",
+    },
+    despues: {
+      src: "/img/casos/resultado-6-despues.jpg",
+      alt: "El mismo paciente con la pieza de prueba de la prótesis óculo-palpebral sobre la órbita",
+      pie: "Prueba de la prótesis sobre la órbita.",
+    },
   },
 ];
 

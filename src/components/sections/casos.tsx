@@ -1,8 +1,7 @@
 import { Section } from "@/components/ui/section";
 import { CasosGrid } from "@/components/ui/before-after";
-import { Gallery } from "@/components/ui/gallery";
 import { Visor } from "@/components/ui/visor";
-import { casosAntesDespues, resultados } from "@/lib/casos";
+import { casosAntesDespues } from "@/lib/casos";
 
 /**
  * Casos reales del consultorio, con el consentimiento informado de cada
@@ -27,18 +26,6 @@ export function Casos() {
           casos={casosAntesDespues}
           label="Casos con fotografía de antes y después"
         />
-
-        <h3 className="mt-14 text-center font-heading text-xs font-semibold tracking-[0.22em] text-primary uppercase lg:text-left">
-          Otros resultados
-        </h3>
-        <div className="mt-6">
-          <Gallery
-            fotos={resultados}
-            label="Pacientes con su prótesis colocada"
-            columnas={resultados.length <= 3 ? 3 : 4}
-            ampliable
-          />
-        </div>
       </Visor>
 
       <p className="measure mt-8 text-sm text-muted">

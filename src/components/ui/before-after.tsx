@@ -60,17 +60,25 @@ export function BeforeAfter({ caso }: { caso: Caso }) {
 }
 
 export function CasosGrid({ casos, label }: { casos: Caso[]; label: string }) {
-  // Con tres pares, tres columnas: en dos, el tercero quedaba solo junto a
+  // Con tres pares (o seis), tres columnas: en dos, el tercero quedaba solo junto a
   // una celda vacía y la sección parecía sin terminar. Tres columnas casan
   // además con la fila de «otros resultados» que va justo debajo.
-  const columnas = casos.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2";
+  const columnas = casos.length >= 3 ? "lg:grid-cols-3" : "lg:grid-cols-2";
+  // Si la última fila queda con una sola tarjeta, va centrada: alineada a la
+  // izquierda parece que faltan las otras dos.
+  const huerfana = casos.length >= 3 && casos.length % 3 === 1;
   return (
     <Carrusel
       label={label}
       listaClassName={`flex snap-x snap-mandatory gap-4 lg:grid lg:snap-none ${columnas} lg:gap-6`}
     >
-      {casos.map((caso) => (
-        <li key={caso.id} className="w-[88%] shrink-0 snap-start lg:w-auto">
+      {casos.map((caso, i) => (
+        <li
+          key={caso.id}
+          className={`w-[88%] shrink-0 snap-start lg:w-auto ${
+            huerfana && i === casos.length - 1 ? "lg:col-start-2" : ""
+          }`}
+        >
           <BeforeAfter caso={caso} />
         </li>
       ))}
