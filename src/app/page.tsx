@@ -4,6 +4,7 @@ import { TrustBar } from "@/components/sections/trust-bar";
 import { ServicesGrid } from "@/components/sections/services-grid";
 import { DoctorPreview } from "@/components/sections/doctor-preview";
 import { Casos } from "@/components/sections/casos";
+import { Resenas } from "@/components/sections/resenas";
 import { Process } from "@/components/sections/process";
 import { Productos } from "@/components/sections/productos";
 import { Areas } from "@/components/sections/areas";
@@ -30,6 +31,7 @@ export default function HomePage() {
       <TrustBar />
       <ServicesGrid />
       <Casos />
+      <Resenas />
       <DoctorPreview />
       <Process />
       <Productos />

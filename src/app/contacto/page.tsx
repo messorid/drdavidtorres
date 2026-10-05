@@ -63,7 +63,8 @@ export default function ContactPage() {
           src="/img/contacto.jpg"
           alt="Ilustración de la Tierra de noche con rutas de luz entre ciudades"
           fill
-          priority
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover"
         />

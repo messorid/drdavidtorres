@@ -46,6 +46,9 @@ export function GET() {
     "",
     `- WhatsApp y teléfono: ${site.phoneDisplay}`,
     `- Correo: ${site.email}`,
+    ...Object.entries(site.social).map(
+      ([red, url]) => `- ${red[0].toUpperCase()}${red.slice(1)}: ${url}`,
+    ),
     "",
   ];
 

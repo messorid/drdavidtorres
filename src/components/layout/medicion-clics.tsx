@@ -21,7 +21,10 @@ function clasificar(href: string): string | null {
   if (href.includes("wa.me/")) return "whatsapp_click";
   if (href.startsWith("tel:")) return "phone_click";
   if (href.startsWith("mailto:")) return "email_click";
+  if (href.includes("/local/writereview")) return "review_write_click";
+  if (href.includes("/local/reviews")) return "reviews_view_click";
   if (href.includes("google.com/maps")) return "directions_click";
+  if (href.includes("instagram.com/")) return "instagram_click";
   return null;
 }
 

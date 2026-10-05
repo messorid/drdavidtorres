@@ -32,7 +32,8 @@ export type IconName =
   | "close"
   | "academicCap"
   | "shield"
-  | "clock";
+  | "clock"
+  | "instagram";
 
 const strokePaths: Partial<Record<IconName, React.ReactNode>> = {
   eye: (
@@ -139,6 +140,13 @@ const strokePaths: Partial<Record<IconName, React.ReactNode>> = {
     <>
       <circle cx="12" cy="12" r="9" />
       <path d="M12 7v5.3l3.4 2" />
+    </>
+  ),
+  instagram: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M17.3 6.7h.01" />
     </>
   ),
 };

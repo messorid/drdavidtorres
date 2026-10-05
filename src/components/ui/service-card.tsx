@@ -16,13 +16,7 @@ import type { DatosTarjeta } from "@/lib/services";
  * esto el enlace quedaba a alturas diferentes y las cortas dejaban un hueco
  * muerto debajo. Anclado al pie, los tres enlaces forman una línea.
  */
-export function ServiceCard({
-  service,
-  priority = false,
-}: {
-  service: DatosTarjeta;
-  priority?: boolean;
-}) {
+export function ServiceCard({ service }: { service: DatosTarjeta }) {
   return (
     <Link
       href={`/servicios/${service.slug}`}
@@ -33,7 +27,6 @@ export function ServiceCard({
           src={service.image}
           alt={service.imageAlt}
           fill
-          priority={priority}
           sizes="(max-width: 767px) 85vw, (max-width: 1023px) 45vw, 30vw"
           className="object-cover"
         />

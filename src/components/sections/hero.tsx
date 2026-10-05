@@ -40,7 +40,8 @@ function EyeBackdrop() {
           src="/img/hero-protesis.jpg"
           alt=""
           fill
-          priority
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover object-[78%_center] lg:object-[68%_center]"
         />

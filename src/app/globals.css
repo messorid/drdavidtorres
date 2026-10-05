@@ -28,6 +28,11 @@
   --color-cta: #15803d;
   --color-cta-dark: #14532d;
 
+  /* Estrellas de las reseñas. No es color de marca sino la convención que
+     todo el mundo reconoce de Google; la nota va siempre también en cifra,
+     así que no depende del contraste de la estrella. */
+  --color-estrella: #f2a900;
+
   /* Texto: la tinta es el marino de marca. */
   --color-ink: #05283c;
   --color-muted: #47606d;

@@ -92,7 +92,8 @@ export default function ProductosPage() {
             src="/img/productos/implantes-y-conformadores.jpg"
             alt="Tres implantes orbitarios porosos de tamaño creciente y, delante, tres conformadores transparentes, sobre fondo gris claro"
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="(max-width: 1199px) 100vw, 1152px"
             className="object-cover"
           />

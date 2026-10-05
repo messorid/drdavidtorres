@@ -71,7 +71,8 @@ export default function ServiciosPage() {
           src="/img/banner-iris.jpg"
           alt="Ilustración de una prótesis ocular sostenida entre los dedos"
           fill
-          priority
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover"
         />

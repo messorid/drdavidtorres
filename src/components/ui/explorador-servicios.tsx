@@ -173,12 +173,12 @@ export function ExploradorServicios({
             label={etiquetaCarrusel}
             listaClassName="flex snap-x snap-mandatory gap-4 md:gap-5"
           >
-            {visibles.map((s, i) => (
+            {visibles.map((s) => (
               <li
                 key={s.slug}
                 className="flex w-[82%] shrink-0 snap-start sm:w-[58%] md:w-[calc((100%-2.5rem)/3)]"
               >
-                <ServiceCard service={s} priority={i === 0} />
+                <ServiceCard service={s} />
               </li>
             ))}
           </Carrusel>

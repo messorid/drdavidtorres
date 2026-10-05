@@ -116,10 +116,36 @@ export const site = {
   /* PENDIENTE CLIENTE — número de colegiatura / MPPS para el pie de página. */
   license: null as null | { type: string; number: string },
 
-  /* PENDIENTE CLIENTE — perfiles reales. Un perfil inventado rompe el
-     sameAs del schema y la confianza del paciente. */
-  social: {} as Record<string, string>,
+  /* Solo perfiles reales, confirmados por el cliente. Un perfil inventado
+     rompe el sameAs del schema y la confianza del paciente. */
+  social: {
+    instagram: "https://www.instagram.com/drdavidtorres",
+  } as Record<string, string>,
+
+  /**
+   * Ficha de Google Business Profile del doctor, enlace dado por el cliente.
+   *
+   * El Place ID sale del identificador de la propia ficha (no de una
+   * búsqueda), y se comprobó que abre esta ficha y no otra. El pin cae a
+   * unos 45 m de la Clínica de Especialidades Médicas Los Llanos (CEMELL),
+   * que es la sede de Acarigua: por eso la ficha va asociada a esa sede y
+   * sus coordenadas se publican como las del negocio.
+   */
+  fichaGoogle: {
+    sede: "acarigua",
+    placeId: "ChIJTx_TMUzBfY4RNeT0EwiFdFU",
+    url: "https://maps.google.com/?cid=6157692860263359541",
+    lat: 9.5595854,
+    lng: -69.2153283,
+  },
 } as const;
+
+/** Abre en Google el cuadro para escribir una reseña. Quien la deja entra
+ *  con su propia cuenta de Google; la reseña vive en Google, no aquí. */
+export const urlEscribirResena = `https://search.google.com/local/writereview?placeid=${site.fichaGoogle.placeId}`;
+
+/** Abre la lista completa de reseñas de la ficha en Google. */
+export const urlVerResenas = `https://search.google.com/local/reviews?placeid=${site.fichaGoogle.placeId}`;
 
 /** Sede que se publica como dirección del negocio en el schema. */
 export const sedePrincipal = site.sedes.find((s) => s.principal)!;
@@ -143,14 +169,20 @@ type Sede = (typeof site.sedes)[number];
  * Enlace a Google Maps para llegar a una sede.
  *
  * Se arma como **búsqueda** con los datos que el cliente confirmó, no con
- * coordenadas: no se han verificado sobre el mapa y un pin unos metros
- * desplazado manda al paciente a la puerta equivocada. Si Maps reconoce el
- * sitio, abre su ficha con la ruta; si no, muestra la búsqueda en la ciudad
- * correcta, que sigue siendo cierto.
+ * coordenadas sueltas: un pin unos metros desplazado manda al paciente a la
+ * puerta equivocada. Si Maps reconoce el sitio, abre su ficha con la ruta;
+ * si no, muestra la búsqueda en la ciudad correcta, que sigue siendo cierto.
+ *
+ * La sede que tiene ficha propia en Google añade su Place ID: Maps abre
+ * directamente la ficha del doctor, con sus fotos y sus reseñas.
  */
 export function mapsUrl(sede: Sede): string {
   const consulta = [sede.lugar, sede.direccion, sede.ciudad, sede.estado, site.country]
     .filter(Boolean)
     .join(", ");
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(consulta)}`;
+  const ficha =
+    sede.id === site.fichaGoogle.sede
+      ? `&query_place_id=${site.fichaGoogle.placeId}`
+      : "";
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(consulta)}${ficha}`;
 }

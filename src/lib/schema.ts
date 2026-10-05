@@ -1,4 +1,4 @@
-import { site, sedePrincipal, mapsUrl } from "./site";
+import { site, sedePrincipal } from "./site";
 import { services, type Service } from "./services";
 import { faqs } from "./faqs";
 import { canonical } from "./seo";
@@ -9,9 +9,10 @@ import { canonical } from "./seo";
  * ver en pantalla, es marcado engañoso.
  *
  * Ausencias deliberadas:
- *   - `geo`: no hay coordenadas verificadas. El centroide de la ciudad para
- *     "ayudar" es un dato falso.
- *   - `aggregateRating`: no hay reseñas verificables.
+ *   - `aggregateRating`: aunque la ficha de Google tenga reseñas, Google no
+ *     admite estrellas marcadas por el propio negocio en su web (las llama
+ *     «self-serving» y las ignora o penaliza), y la nota es contenido de
+ *     Google, no del sitio. Las estrellas se ganan en la ficha de Maps.
  */
 
 const CENTRO_ID = `${site.url}/#centro`;
@@ -44,9 +45,14 @@ export function centroSchema() {
     email: site.email,
     medicalSpecialty: "Ophthalmologic",
     currenciesAccepted: "VES",
-    // Búsqueda en Maps con los datos confirmados, no coordenadas: las mismas
-    // razones que el botón «Cómo llegar».
-    hasMap: mapsUrl(sedePrincipal),
+    // La ficha de Google del doctor y su pin, que corresponden a la sede
+    // principal (ver `site.fichaGoogle`).
+    hasMap: site.fichaGoogle.url,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.fichaGoogle.lat,
+      longitude: site.fichaGoogle.lng,
+    },
     // Schema.org admite una sola `address` por entidad: va la sede con más
     // días de consulta. Las demás se publican en la página y como `areaServed`.
     address: {
@@ -95,6 +101,12 @@ export function medicoSchema() {
       name: "Universidad Centroccidental Lisandro Alvarado",
       alternateName: "UCLA",
     },
+    // El Instagram es del doctor en persona (@drdavidtorres), así que se
+    // declara también aquí: le dice a Google que el perfil y esta ficha
+    // son la misma persona.
+    ...(Object.keys(site.social).length
+      ? { sameAs: Object.values(site.social) }
+      : {}),
     hasCredential: site.credentials.map((c) => ({
       "@type": "EducationalOccupationalCredential",
       name: c,

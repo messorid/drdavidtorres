@@ -216,7 +216,9 @@ export function Ampliable({
       data-alt={alt}
       data-pie={pie}
       data-etiqueta={etiqueta}
-      aria-label={`Ampliar foto: ${alt}`}
+      // El nombre empieza por la etiqueta visible («Antes», «Después») para
+      // que el control por voz funcione diciendo lo que se ve en pantalla.
+      aria-label={`${etiqueta ? `${etiqueta}. ` : ""}Ampliar foto: ${alt}`}
       className={`group/amp block cursor-zoom-in text-left ${className}`}
     >
       {children}

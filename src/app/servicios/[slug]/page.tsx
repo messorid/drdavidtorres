@@ -118,13 +118,16 @@ export default async function ServicePage({
           {service.imageHeroMobile ? (
             // Hay un archivo hecho a medida para cada proporción, así que se
             // llena el marco: nada de encajar sobre marino ni de bandas.
+            // Solo `fetchPriority`, sin `preload` ni `loading="eager"`: con
+            // cualquiera de los dos se descargarían AMBAS versiones. En carga
+            // diferida, la oculta por `display:none` no se pide nunca.
             <>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-base bg-navy md:hidden">
                 <Image
                   src={service.imageHeroMobile}
                   alt={service.imageAlt}
                   fill
-                  priority
+                  fetchPriority="high"
                   sizes="100vw"
                   className="object-cover"
                 />
@@ -134,7 +137,7 @@ export default async function ServicePage({
                   src={service.imageHero}
                   alt={service.imageAlt}
                   fill
-                  priority
+                  fetchPriority="high"
                   sizes="(max-width: 1199px) 100vw, 1152px"
                   className="object-cover"
                 />
@@ -150,7 +153,8 @@ export default async function ServicePage({
                 src={service.imageHero}
                 alt={service.imageAlt}
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 sizes="(max-width: 1023px) 100vw, 900px"
                 className="object-contain"
               />

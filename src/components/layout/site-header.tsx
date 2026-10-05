@@ -43,16 +43,18 @@ export function SiteHeader() {
         <Link
           href="/"
           className="flex min-w-0 cursor-pointer items-center gap-3 py-1"
-          aria-label={`${site.name} — ir al inicio`}
         >
           {/* Isotipo del manual de marca, variante marino para fondo claro.
-              `priority` porque entra en el primer pintado de cada página. */}
+              `width`/`height` son los del tamaño pintado (h-11), no los del
+              archivo: de ellos sale el srcset, y con 494 px el navegador
+              bajaba una versión de 1080 px para mostrar 85. Sin `preload`:
+              compite con la foto del hero, que es la que mide la carga. */}
           <Image
             src="/marca/isotipo-marino.png"
             alt=""
-            width={494}
-            height={256}
-            priority
+            width={85}
+            height={44}
+            loading="eager"
             className="h-10 w-auto shrink-0 sm:h-11"
           />
           <span className="leading-tight">
@@ -62,6 +64,10 @@ export function SiteHeader() {
             <span className="block text-xs text-muted">
               Oftalmólogo · Ocularista
             </span>
+            {/* El nombre accesible es el texto visible más este aviso: quien
+                usa control por voz dice lo que ve («Dr. David Torres») y el
+                enlace responde. Un `aria-label` distinto lo impedía. */}
+            <span className="sr-only">, ir al inicio</span>
           </span>
         </Link>
 

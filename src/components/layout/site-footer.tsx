@@ -37,6 +37,23 @@ export function SiteFooter() {
                 {site.email}
               </a>
             </li>
+            {site.social.instagram ? (
+              <li>
+                <a
+                  href={site.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] cursor-pointer items-center gap-2.5 font-medium text-primary transition-colors duration-200 hover:text-primary-dark"
+                >
+                  <Icon name="instagram" className="h-5 w-5 shrink-0" />
+                  @{site.social.instagram.split("/").filter(Boolean).pop()}
+                  <span className="sr-only">
+                    {" "}
+                    en Instagram (se abre en una ventana nueva)
+                  </span>
+                </a>
+              </li>
+            ) : null}
           </ul>
         </div>
 

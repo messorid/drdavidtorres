@@ -59,7 +59,8 @@ export default function AboutPage() {
                   src="/img/doctor.jpg"
                   alt="El Dr. David Torres en su consultorio, con el logo del centro al fondo"
                   fill
-                  priority
+                  loading="eager"
+                  fetchPriority="high"
                   sizes="(max-width: 1023px) 85vw, 384px"
                   className="object-cover"
                 />
