@@ -151,10 +151,25 @@ export function SiteFooter() {
             súbita, dolor ocular intenso o traumatismo del ojo, acude a
             emergencia sin esperar una cita.
           </p>
-          <p className="mt-4 text-center text-xs text-muted md:text-left">
-            © {year} {site.name}. Todos los derechos reservados.
-            {/* PENDIENTE CLIENTE: número de colegiatura / MPPS. */}
-          </p>
+          <div className="mt-4 flex flex-col items-center gap-1 text-xs text-muted md:flex-row md:items-center md:justify-between md:gap-6">
+            <p className="text-center md:text-left">
+              © {year} {site.name}. Todos los derechos reservados.
+              {/* PENDIENTE CLIENTE: número de colegiatura / MPPS. */}
+            </p>
+            <p className="shrink-0">
+              Página web hecha por{" "}
+              <span className="font-semibold text-ink">Boostori</span>{" "}
+              <a
+                href="https://www.boostori.com"
+                target="_blank"
+                rel="noopener"
+                className="relative inline-flex min-h-[44px] cursor-pointer items-center font-medium text-primary underline underline-offset-4 transition-colors duration-200 hover:text-primary-dark"
+              >
+                www.boostori.com
+                <span className="sr-only"> (se abre en una ventana nueva)</span>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
